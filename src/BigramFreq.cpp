@@ -40,5 +40,43 @@ void BigramFreq::setFrequency(int frequency) {
 std::string BigramFreq::toString() const {
     return _bigram.toString() + " " + to_string(_frequency);
 }
+/*void serialize(std::ostream& outputStream){
+    
+}
 
+void deserialize(std::istream& inputSstream){
+    
+}
+*/
+std::ostream &operator<<(std::ostream& os, BigramFreq& bigramFreq){
+    os << bigramFreq.toString();
+    return os;
+}
 
+std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq){
+    
+}
+
+bool operator>(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
+    
+}
+
+bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
+    
+}
+
+bool operator==(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
+    
+}
+
+bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
+    
+}
+
+bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2){
+    
+}
+
+bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
+    
+}
