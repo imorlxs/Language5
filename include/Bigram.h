@@ -25,7 +25,7 @@
  * It uses a string to store the pair of characters
  */
 class Bigram {
-public:    
+public:
     /**
      * @brief It builds a Bigram object with @p text as the 
      * text of the bigram. If the string @p text contains a number of characters 
@@ -35,8 +35,8 @@ public:
      * @param text the text for the bigram. It should be a string with just two
      * characters.
      */
-    Bigram(const std::string& text="__");
-    
+    Bigram(const std::string& text = "__");
+
     /**
      * @brief It builds a Bigram object using the two characters passed as
      * parameters of this constructor as the text of the bigram
@@ -45,7 +45,7 @@ public:
      * @param second the second character for the bigram
      */
     Bigram(char first, char second);
-    
+
     /**
      * @brief It builds a Bigram object with @p text (a c-string) as the 
      * text of the bigram. If the c-string @p text contains a number of character 
@@ -55,19 +55,19 @@ public:
      * @param text the text for the bigram
      */
     Bigram(const char text[]);
-    
+
     /**
      * @brief Obtains a copy of the text of this bigram as a string object
      * @return The text of this bigram as a string object
      */
     std::string getText() const;
-    
+
     /**
      * @brief Obtains a copy of the text of this bigram as a string object
      * @return The text of this bigram as a string object
      */
     std::string toString() const;
-    
+
     /**
      * @brief Gets a const reference to the character at the given position
      * @param index the position to consider
@@ -76,21 +76,21 @@ public:
      * @return A const reference to the character at the given position
      */
     const char& at(int index) const;
-    
+
     /**
      * @brief Gets a reference to the character at the given position
      * @param index the position to consider
      * @throw std::out_of_range Throws a std::out_of_range exception if the 
      * index is not equals to 0 or 1
      * @return A reference to the character at the given position
-     */    
+     */
     char& at(int index);
-    
+
     /**
      * Converts lowercase letters in this bigram to uppercase. Modifier method
      */
     void toUpper();
-    
+
     /**
      * Serializes this object to the given output stream. Only the two
      * bytes of the two characters of the bigram are sent to the output stream.
@@ -98,15 +98,29 @@ public:
      * @param outputStream A output stream where this object will be serialized
      */
     void serialize(std::ostream& outputStream);
-    
+
     /**
      * Deserializes this object from the given input stream. It reads two
      * bytes from the given input stream and put them in the text of this Bigram
      * @param inputSstream A input stream from which this object will be deserialized
      */
     void deserialize(std::istream& inputStream);
- 
-private:   
+
+    /**
+     * @brief Gets a reference to the character at the given position
+     * @param index the position to consider
+     * @return A  reference to the character at the given position
+     */
+    char& operator[] (size_t pos);
+
+    /**
+     * @brief Gets a const reference to the character at the given position
+     * @param index the position to consider
+     * @return A const reference to the character at the given position
+     */
+    const char& operator[] (size_t pos) const;
+
+private:
 
     /**
      * The text in this Bigram. Should be a c-string with two characters that
@@ -132,7 +146,7 @@ bool isValidCharacter(char character, const std::string& validCharacters);
  * @param bigram the Bigram object. Input parameter
  * @return @p os A reference to the output stream
  */
-std::ostream operator<<(std::ostream os, Bigram bigram);
+std::ostream operator<<(std::ostream& os, const Bigram& bigram);
 
 /**
  * @brief Overloading of the stream extraction operator for Bigram class
@@ -142,7 +156,11 @@ std::ostream operator<<(std::ostream os, Bigram bigram);
  * @param bigram the Bigram object. Output parameter
  * @return @p A reference to the input stream
  */
-std::istream operator>>(std::istream is, Bigram bigram);
+std::istream operator>>(std::istream& is, Bigram& bigram);
+
+
+
+
 
 #endif /* BIGRAM_H */
 
