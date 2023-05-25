@@ -15,12 +15,13 @@
 
 using namespace std;
 
-BigramFreq::BigramFreq():_bigram("__"), _frequency(0) {
+BigramFreq::BigramFreq() : _bigram("__"), _frequency(0) {
 }
 
 const Bigram& BigramFreq::getBigram() const {
     return _bigram;
 }
+
 int BigramFreq::getFrequency() const {
     return _frequency;
 }
@@ -30,8 +31,8 @@ void BigramFreq::setBigram(const Bigram& bigram) {
 }
 
 void BigramFreq::setFrequency(int frequency) {
-    if(frequency<0){
-        throw  std::out_of_range(string("void BigramFreq::setFrequency(int frequency): ") +
+    if (frequency < 0) {
+        throw std::out_of_range(string("void BigramFreq::setFrequency(int frequency): ") +
                 "invalid frecuency " + to_string(frequency));
     }
     this->_frequency = frequency;
@@ -40,6 +41,7 @@ void BigramFreq::setFrequency(int frequency) {
 std::string BigramFreq::toString() const {
     return _bigram.toString() + " " + to_string(_frequency);
 }
+
 /*void serialize(std::ostream& outputStream){
     
 }
@@ -47,36 +49,51 @@ std::string BigramFreq::toString() const {
 void deserialize(std::istream& inputSstream){
     
 }
-*/
-std::ostream &operator<<(std::ostream& os, BigramFreq& bigramFreq){
+ */
+std::ostream &operator<<(std::ostream& os, const BigramFreq& bigramFreq) {
     os << bigramFreq.toString();
     return os;
 }
 
-std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq){
-    
+std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq) {
+    string text;
+    int freq;
+    is >> text >> freq;
+
+    Bigram bigram(text);
+    bigramFreq.setBigram(bigram);
+    bigramFreq.setFrequency(freq);
+    return is;
 }
 
-bool operator>(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator>(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+    return bigramFreq2<bigramFreq1;
 }
 
-bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+    bool minor = false;
+    if (bigramFreq1.getFrequency() < bigramFreq2.getFrequency()) {
+        minor = true;
+    } else if (bigramFreq1.getFrequency() == bigramFreq2.getFrequency()) {
+        if (bigramFreq1.getBigram().getText() < bigramFreq2.getBigram().getText()) {
+            minor = true;
+        }
+    }
+    return minor;
 }
 
-bool operator==(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator==(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+    return !(bigramFreq1 < bigramFreq2 || bigramFreq2 < bigramFreq1);
 }
 
-bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+    return (bigramFreq1 < bigramFreq2 || bigramFreq2 < bigramFreq1)
 }
 
-bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2) {
+    return (!bigramFreq2<bigramFreq1);
 }
 
-bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2){
-    
+bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+    return !(bigramFreq1 < bigramFreq2);
 }
