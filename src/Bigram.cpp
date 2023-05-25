@@ -18,29 +18,27 @@ using namespace std;
 
 Bigram::Bigram(const std::string& text) {
     if (text.size() == 2) {
-        strcpy(_text,text.c_str());
-    }
-    else{
+        strcpy(_text, text.c_str());
+    } else {
         strcpy(_text, "__"); // ¿Lanzar excepción?
     }
 }
-    
-Bigram::Bigram(char first, char second) { 
+
+Bigram::Bigram(char first, char second) {
     _text[0] = first;
     _text[1] = second;
     _text[2] = '\0';
 }
 
-Bigram::Bigram(const char* text)  { 
+Bigram::Bigram(const char* text) {
     if (strlen(text) == 2) {
         strcpy(_text, text);
+    } else {
+        strcpy(_text, "__"); // ¿Lanzar excepción?
     }
-    else{
-        strcpy(_text, "__");  // ¿Lanzar excepción?
-    } 
 }
 
-std::string Bigram::getText() const{
+std::string Bigram::getText() const {
     return string(_text);
 }
 
@@ -48,33 +46,60 @@ std::string Bigram::toString() const {
     return string(_text);
 }
 
-const char& Bigram::at(int index) const{
-    if(index<0 || index>1){
+const char& Bigram::at(int index) const {
+    if (index < 0 || index > 1) {
         throw std::out_of_range(string("const char& Bigram::at(int index) const: ") +
                 "invalid position " + to_string(index));
-    }
-    else{
+    } else {
         return _text[index];
     }
 }
 
-char& Bigram::at(int index){
-    if(index<0 || index>1){
+char& Bigram::at(int index) {
+    if (index < 0 || index > 1) {
         throw std::out_of_range(string("char& Bigram::at(int index): ") +
                 "invalid position " + to_string(index));
-    }
-    else{
+    } else {
         return _text[index];
     }
 }
-
 
 void Bigram::toUpper() {
     at(0) = toupper(at(0));
     at(1) = toupper(at(1));
 }
+//
+//void serialize(std::ostream& outputStream){
+//    
+//}
+//
+//void deserialize(std::istream& inputStream){
+//    
+//}
 
-bool isValidCharacter(char character, const string& validCharacters) {
-    return validCharacters.find(character)!=string::npos;
+char& Bigram::operator[](size_t pos) {
+    return _text[pos];
 }
 
+const char& Bigram::operator[](size_t pos) const {
+    return _text[pos];
+}
+
+bool isValidCharacter(char character, const string& validCharacters) {
+    return validCharacters.find(character) != string::npos;
+}
+
+std::ostream operator<<(std::ostream& os, const Bigram& bigram) {
+    os << bigram.getText();
+    return os;
+}
+
+std::istream operator>>(std::istream& is, Bigram& bigram) {
+    char c;
+    c = is.get();
+    bigram[0] = c;
+    c = is.get();
+    bigram[1] = c;
+    bigram[2] = '\0';
+    return is;
+}
