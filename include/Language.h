@@ -195,20 +195,24 @@ public:
      * @param bigramFreq The BigramFreq to append to this object
      */
     void append(const BigramFreq& bigramFreq);
+        
+    void join(const Language &language);
+    
+    void swap(int first, int second);
     
     /**
      * @brief Overloading of the [] operator for Language class
      * @param index index of the element. Input parameter
      * @return A reference to the BigramFreq object at position @p index
      */
-    BigramFreq operator[](int index);
+    BigramFreq& operator[](int index) const;
 
     /**
      * @brief Overloading of the [] operator for Language class
      * @param index index of the element. Input parameter 
      * @return A reference to the BigramFreq object at position @p index
      */
-    BigramFreq operator[](int index);
+    BigramFreq& operator[](int index);
     
     /**
      * @brief Overloading of the += operator with a Language parameter. 
@@ -219,13 +223,14 @@ public:
      * @param language A Language object. Input parameter
      * @return A reference to this object.
      */
-    Language operator+=(Language language);
+    Language operator+=(const Language& language);
       
 private:
     std::string _languageId; ///< language identifier
     BigramFreq* _vectorBigramFreq; ///< Dynamic array of BigramFreq
     int _size; ///< Number of elements in _vectorBigramFreq
-    static const std::string MAGIC_STRING_T; ///< A const string with the magic string for text files
+    static const std::string MAGIC_STRING_T;///< A const string with the magic string for text files
+    static const std::string MAGIC_STRING_B;
     BigramFreq* allocate(int n);
     void increase(BigramFreq* &vector1, int &nElements, int increment);
     void copyFrom(const Language &orig);
@@ -237,7 +242,7 @@ private:
  * @param language the Language object. Input parameter
  * @return @p os A reference to the output stream
  */
-std::ostream operator<<(std::ostream os, Language language);
+std::ostream &operator<<(const std::ostream& os, const Language& language);
 
 /**
  * @brief Overloading of the stream extraction operator for Language class
@@ -247,6 +252,7 @@ std::ostream operator<<(std::ostream os, Language language);
  * @param language the Language object. Output parameter
  * @return @p is A reference to the input stream
  */
-std::istream operator>>(std::istream is, Language language);
+std::istream &operator>>(const std::istream& is, const Language& language);
 
 #endif /* LANGUAGE_H */
+
