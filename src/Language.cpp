@@ -257,6 +257,7 @@ std::ostream &operator<<(const std::ostream& os, const Language& language){
     for (int i = 0; i < language.getSize(); i++){
         os << language.at(i) << endl;
     }
+    return os;
 }
 
 std::istream &operator>>(const std::istream& is, const Language& language){
@@ -273,4 +274,6 @@ std::istream &operator>>(const std::istream& is, const Language& language){
         l.at(i) = bigramfreq;
     }
     language = l;
+    
+    return is;
 }
