@@ -14,7 +14,8 @@
 using namespace std;
 
 const string Language::MAGIC_STRING_T = "MP-LANGUAGE-T-1.0";
-//shdcbsdkjfbksjdcf
+const string Language::MAGIC_STRING_B = "MP-LANGUAGE-B-1.0";
+
 Language::Language() {
     _size = 0;
     _languageId = "unknown";
@@ -118,9 +119,9 @@ std::string Language::toString() const {
 void Language::sort() {
     for (int i = 0; i < _size; i++) {
         for (int j = _size - 1; j > i; j--) {
-            if (_vectorBigramFreq[j].getFrequency() > _vectorBigramFreq[j - 1].getFrequency()) {
+            if (_vectorBigramFreq[j] > _vectorBigramFreq[j - 1]) {
                 this->swap(j, j - 1);
-            } else if (_vectorBigramFreq[j].getFrequency() == _vectorBigramFreq[j - 1].getFrequency()) {
+            } else if (_vectorBigramFreq[j] == _vectorBigramFreq[j - 1]) {
                 if (_vectorBigramFreq[j].getBigram().at(0) < _vectorBigramFreq[j - 1].getBigram().at(0)) {
                     this->swap(j, j - 1);
                 } else if (_vectorBigramFreq[j].getBigram().at(0) == _vectorBigramFreq[j - 1].getBigram().at(0)) {
@@ -138,8 +139,7 @@ void Language::save(const char fileName[]) const {
     fout.open(fileName);
     if (fout) {
         fout << MAGIC_STRING_T << endl;
-        fout << _languageId << endl;
-        fout << this->toString();
+        fout << *this;
         if (!fout) {
             throw std::ios_base::failure(string("error_de_escritura_del_fichero\n"));
         }
@@ -162,21 +162,7 @@ void Language::load(const char fileName[]) {
             throw std::invalid_argument(string("The magic word isn't correct\n"));
         }
         
-        fin >> _languageId;
-        this->setLanguageId(_languageId);
-        
-        fin >> _size;
-        
-        delete[] _vectorBigramFreq;
-        _vectorBigramFreq = allocate(_size);
-        
-        for (int i = 0; i < _size; i++) {
-            fin >> text;
-            fin >> frequency;
-            Bigram bigram(text);
-            _vectorBigramFreq[i].setBigram(bigram);
-            _vectorBigramFreq[i].setFrequency(frequency);
-        }
+        fin >> *this;
 
 
         if (!fin) {
@@ -216,6 +202,20 @@ void Language::swap(int first, int second) {
     _vectorBigramFreq[first] = aux;
 }
 
+
+BigramFreq& Language::operator[](int index) const{
+    return this->at(index);
+}
+
+BigramFreq& Language::operator[](int index){
+   return this->at(index);
+}
+
+Language& Language::operator+=(const Language& language){
+    this->join(language);
+    return *this;
+}
+
 BigramFreq* Language::allocate(int n) {
     if (n > 0) {
         BigramFreq *v;
@@ -249,4 +249,28 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     }
     delete[] vector1;
     vector1 = vector2;
+}
+
+std::ostream &operator<<(const std::ostream& os, const Language& language){
+    os << language.getLanguageId() << endl;
+    os << language.getSize() << endl;
+    for (int i = 0; i < language.getSize(); i++){
+        os << language.at(i) << endl;
+    }
+}
+
+std::istream &operator>>(const std::istream& is, const Language& language){
+    language.~Language();
+    std::string id;
+    int num_bigrams;
+    is >> id;
+    is >> num_bigrams;
+    Language l(num_bigrams);
+    l.setLanguageId(id);
+    for (int i = 0; i < num_bigrams; i++){
+        BigramFreq bigramfreq;
+        is >> bigramfreq;
+        l.at(i) = bigramfreq;
+    }
+    language = l;
 }
