@@ -122,10 +122,10 @@ void Language::sort() {
             if (_vectorBigramFreq[j] > _vectorBigramFreq[j - 1]) {
                 this->swap(j, j - 1);
             } else if (_vectorBigramFreq[j] == _vectorBigramFreq[j - 1]) {
-                if (_vectorBigramFreq[j].getBigram().at(0) < _vectorBigramFreq[j - 1].getBigram().at(0)) {
+                if (_vectorBigramFreq[j].getBigram()[0] < _vectorBigramFreq[j - 1].getBigram()[0]) {
                     this->swap(j, j - 1);
-                } else if (_vectorBigramFreq[j].getBigram().at(0) == _vectorBigramFreq[j - 1].getBigram().at(0)) {
-                    if (_vectorBigramFreq[j].getBigram().at(1) < _vectorBigramFreq[j - 1].getBigram().at(1)) {
+                } else if (_vectorBigramFreq[j].getBigram()[0] == _vectorBigramFreq[j - 1].getBigram()[0]) {
+                    if (_vectorBigramFreq[j].getBigram()[1] < _vectorBigramFreq[j - 1].getBigram()[1]) {
                         this->swap(j, j - 1);
                     }
                 }
