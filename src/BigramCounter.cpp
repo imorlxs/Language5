@@ -23,3 +23,59 @@
  * constructor is used with a different c-string
  */
 const char* const BigramCounter::DEFAULT_VALID_CHARACTERS="abcdefghijklmnopqrstuvwxyz\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
+
+
+BigramCounter::BigramCounter(std::string validChars = DEFAULT_VALID_CHARACTERS){
+    
+}
+
+BigramCounter::BigramCounter(const BigramCounter& orig){
+    
+}
+
+~BigramCounter(){
+    
+}
+
+int BigramCounter::getSize() const{
+    
+}
+
+int BigramCounter::getNumberActiveBigrams() const{
+    
+}
+
+bool BigramCounter::setFrequency(const Bigram& bigram, int frequency){
+    
+}
+
+void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency = 0){
+    
+}
+
+
+BigramCounter& BigramCounter::operator=(const BigramCounter& orig){
+    
+}
+
+BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs){
+    
+}
+
+void BigramCounter::calculateFrequencies(char* fileName){
+    
+}
+
+Language BigramCounter::toLanguage() const{
+    
+}
+
+int BigramCounter::operator()(int row, int column) const{
+    
+}
+
+int BigramCounter::operator()(int row, int column){
+    
+}
+
+
