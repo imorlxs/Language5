@@ -22,58 +22,60 @@
  * default parameter. It is possible to use a different c-string if that
  * constructor is used with a different c-string
  */
+
+//javi
 const char* const BigramCounter::DEFAULT_VALID_CHARACTERS="abcdefghijklmnopqrstuvwxyz\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
 
-
-BigramCounter::BigramCounter(std::string validChars = DEFAULT_VALID_CHARACTERS){
+//isaac
+BigramCounter::BigramCounter(std::string validChars){
     
 }
-
+//javi
 BigramCounter::BigramCounter(const BigramCounter& orig){
     
 }
-
+//isaac
 ~BigramCounter(){
     
 }
-
+//javi
 int BigramCounter::getSize() const{
     
 }
-
+//isaac
 int BigramCounter::getNumberActiveBigrams() const{
     
 }
-
+//J
 bool BigramCounter::setFrequency(const Bigram& bigram, int frequency){
     
 }
-
+//I
 void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency = 0){
     
 }
 
-
+//J
 BigramCounter& BigramCounter::operator=(const BigramCounter& orig){
     
 }
-
+//I
 BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs){
     
 }
-
+//J
 void BigramCounter::calculateFrequencies(char* fileName){
     
 }
-
+//I
 Language BigramCounter::toLanguage() const{
     
 }
-
+//J
 int BigramCounter::operator()(int row, int column) const{
     
 }
-
+//I
 int BigramCounter::operator()(int row, int column){
     
 }
