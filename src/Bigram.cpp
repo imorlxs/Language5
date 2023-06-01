@@ -20,7 +20,7 @@ Bigram::Bigram(const std::string& text) {
     if (text.size() == 2) {
         strcpy(_text, text.c_str());
     } else {
-        strcpy(_text, "__"); // ¿Lanzar excepción?
+        strcpy(_text, "__");
     }
 }
 
