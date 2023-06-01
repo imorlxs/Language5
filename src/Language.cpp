@@ -19,7 +19,7 @@ const string Language::MAGIC_STRING_B = "MP-LANGUAGE-B-1.0";
 Language::Language() {
     _size = 0;
     _languageId = "unknown";
-    _vectorBigramFreq = allocate(0);
+    _vectorBigramFreq = nullptr;
 }
 
 Language::Language(int numberBigrams) {
@@ -157,11 +157,11 @@ void Language::load(const char fileName[]) {
     fin.open(fileName);
     if (fin) {
         fin >> magic_string;
-        
+
         if (magic_string != MAGIC_STRING_T) {
             throw std::invalid_argument(string("The magic word isn't correct\n"));
         }
-        
+
         fin >> *this;
 
 
@@ -169,7 +169,7 @@ void Language::load(const char fileName[]) {
             throw std::ios_base::failure(string("error_de_lectura_del_fichero\n"));
         }
         fin.close();
-        
+
     } else {
         throw std::ios_base::failure(string("error_de_apertura_del_fichero\n"));
     }
@@ -202,32 +202,24 @@ void Language::swap(int first, int second) {
     _vectorBigramFreq[first] = aux;
 }
 
-
-BigramFreq& Language::operator[](int index) const{
+BigramFreq& Language::operator[](int index) const {
     return this->at(index);
 }
 
-BigramFreq& Language::operator[](int index){
-   return this->at(index);
+BigramFreq& Language::operator[](int index) {
+    return this->at(index);
 }
 
-Language& Language::operator+=(const Language& language){
+Language& Language::operator+=(const Language& language) {
     this->join(language);
     return *this;
 }
 
 BigramFreq* Language::allocate(int n) {
-    if (n > 0) {
-        BigramFreq *v;
-        v = new BigramFreq [n];
-        return v;
-    } else if (n == 0) {
-        BigramFreq *v = nullptr;
-        return v;
-    } else {
-        throw std::out_of_range(string("Language::allocate(int n) ")
-                + "invalid value " + std::to_string(n));
-    }
+    BigramFreq *v;
+    v = new BigramFreq [n];
+    return v;
+
 
 }
 
@@ -251,16 +243,16 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     vector1 = vector2;
 }
 
-std::ostream &operator<<(const std::ostream& os, const Language& language){
+std::ostream &operator<<(const std::ostream& os, const Language& language) {
     os << language.getLanguageId() << endl;
     os << language.getSize() << endl;
-    for (int i = 0; i < language.getSize(); i++){
+    for (int i = 0; i < language.getSize(); i++) {
         os << language.at(i) << endl;
     }
     return os;
 }
 
-std::istream &operator>>(const std::istream& is, const Language& language){
+std::istream &operator>>(const std::istream& is, const Language& language) {
     language.~Language();
     std::string id;
     int num_bigrams;
@@ -268,12 +260,12 @@ std::istream &operator>>(const std::istream& is, const Language& language){
     is >> num_bigrams;
     Language l(num_bigrams);
     l.setLanguageId(id);
-    for (int i = 0; i < num_bigrams; i++){
+    for (int i = 0; i < num_bigrams; i++) {
         BigramFreq bigramfreq;
         is >> bigramfreq;
         l.at(i) = bigramfreq;
     }
     language = l;
-    
+
     return is;
 }
