@@ -56,11 +56,10 @@ std::ostream &operator<<(std::ostream& os, const BigramFreq& bigramFreq) {
 }
 
 std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq) {
-    string text;
+    Bigram bigram;
     int freq;
-    is >> text >> freq;
+    is >> bigram >> freq;
 
-    Bigram bigram(text);
     bigramFreq.setBigram(bigram);
     bigramFreq.setFrequency(freq);
     return is;
@@ -91,7 +90,7 @@ bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
 }
 
 bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2) {
-    return (!bigramFreq2<bigramFreq1);
+    return (!bigramFreq2 < bigramFreq1);
 }
 
 bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
