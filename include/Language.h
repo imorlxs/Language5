@@ -44,18 +44,18 @@ public:
      * @param numberBigrams The number of bigrams to use in this Language
      */
     Language(int numberBigrams);
-    
+
     /**
      * @brief Copy constructor
      * @param orig the Language object used as source for the copy
      */
     Language(const Language& orig);
-    
+
     /**
      * @brief Destructor of class Language
      */
     ~Language();
-    
+
     /**
      * @brief Overloading of the assignment operator for Language class
      * @param orig the Language object used as source for the assignment
@@ -84,7 +84,7 @@ public:
      * given index is not valid
      * @return A const reference to the BigramFreq at the given position
      */
-    const BigramFreq& at(int index) const; 
+    const BigramFreq& at(int index) const;
 
     /**
      * @brief Gets a reference to the BigramFreq at the given position of the 
@@ -94,14 +94,14 @@ public:
      * given index is not valid
      * @return A reference to the BigramFreq at the given position
      */
-    BigramFreq& at(int index); 
+    BigramFreq& at(int index);
 
     /**
      * @brief Gets the number of BigramFreq objects 
      * @return The number of BigramFreq objects 
      */
     int getSize() const;
-    
+
     /**
      * @brief Gets the distance between this Language object (\f$L_1\f$) and 
      * the given one @p otherLanguage (\f$L_2\f$).
@@ -185,7 +185,7 @@ public:
      * exception if an invalid magic string is found in the given file
      */
     void load(const char fileName[]);
-    
+
     /**
      * @brief Appends a copy of the given BigramFreq to this Language object.
      * If the bigram is found in this object, then its frequency is increased
@@ -195,11 +195,11 @@ public:
      * @param bigramFreq The BigramFreq to append to this object
      */
     void append(const BigramFreq& bigramFreq);
-        
+
     void join(const Language &language);
-    
+
     void swap(int first, int second);
-    
+
     /**
      * @brief Overloading of the [] operator for Language class
      * @param index index of the element. Input parameter
@@ -213,7 +213,7 @@ public:
      * @return A reference to the BigramFreq object at position @p index
      */
     BigramFreq& operator[](int index);
-    
+
     /**
      * @brief Overloading of the += operator with a Language parameter. 
      * For each bigram in the given Language @p language, if that bigram is 
@@ -224,12 +224,12 @@ public:
      * @return A reference to this object.
      */
     Language operator+=(const Language& language);
-      
+
 private:
     std::string _languageId; ///< language identifier
     BigramFreq* _vectorBigramFreq; ///< Dynamic array of BigramFreq
     int _size; ///< Number of elements in _vectorBigramFreq
-    static const std::string MAGIC_STRING_T;///< A const string with the magic string for text files
+    static const std::string MAGIC_STRING_T; ///< A const string with the magic string for text files
     static const std::string MAGIC_STRING_B;
     BigramFreq* allocate(int n);
     void increase(BigramFreq* &vector1, int &nElements, int increment);
@@ -242,7 +242,7 @@ private:
  * @param language the Language object. Input parameter
  * @return @p os A reference to the output stream
  */
-std::ostream &operator<<( std::ostream& os, const Language& language);
+std::ostream &operator<<(std::ostream& os, const Language& language);
 
 /**
  * @brief Overloading of the stream extraction operator for Language class
@@ -252,7 +252,7 @@ std::ostream &operator<<( std::ostream& os, const Language& language);
  * @param language the Language object. Output parameter
  * @return @p is A reference to the input stream
  */
-std::istream &operator>>( std::istream& is, const Language& language);
+std::istream &operator>>(std::istream& is, const Language& language);
 
 #endif /* LANGUAGE_H */
 
