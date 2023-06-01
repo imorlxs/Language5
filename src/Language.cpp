@@ -242,7 +242,7 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     delete[] vector1;
     vector1 = vector2;
 }
-
+//¿Por qué no usar el método toString()?
 std::ostream &operator<<(const std::ostream& os, const Language& language) {
     os << language.getLanguageId() << endl;
     os << language.getSize() << endl;
