@@ -243,7 +243,7 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     vector1 = vector2;
 }
 //¿Por qué no usar el método toString()?
-std::ostream &operator<<(const std::ostream& os, const Language& language) {
+std::ostream &operator<<(std::ostream& os, const Language& language) {
     os << language.getLanguageId() << endl;
     os << language.getSize() << endl;
     for (int i = 0; i < language.getSize(); i++) {
@@ -252,7 +252,7 @@ std::ostream &operator<<(const std::ostream& os, const Language& language) {
     return os;
 }
 
-std::istream &operator>>(const std::istream& is, const Language& language) {
+std::istream &operator>>(std::istream& is, const Language& language) {
     //language.~Language();
     std::string id;
     int num_bigrams;
