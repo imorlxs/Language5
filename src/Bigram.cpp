@@ -34,7 +34,7 @@ Bigram::Bigram(const char* text) {
     if (strlen(text) == 2) {
         strcpy(_text, text);
     } else {
-        strcpy(_text, "__"); // ¿Lanzar excepción?
+        strcpy(_text, "__"); 
     }
 }
 
