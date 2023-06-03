@@ -79,7 +79,7 @@ bool BigramCounter::setFrequency(const Bigram& bigram, int frequency) {
         founded = false;
     } else {
         founded = true;
-        this->toLanguage().at(n) = frequency;
+        this->toLanguage().at(n) = frequency; // Hay que cambiarlo directamente en la matriz
     }
     return founded;
 }
