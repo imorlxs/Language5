@@ -13,6 +13,7 @@
  */
 
 #include "BigramCounter.h"
+#include <fstream>
 
 /**
  * DEFAULT_VALID_CHARACTERS is a c-string that contains the set of characters
@@ -36,7 +37,7 @@ BigramCounter::BigramCounter(const BigramCounter& orig){
 }
 //isaac
 ~BigramCounter(){
-    
+    for()
 }
 //javi
 int BigramCounter::getSize() const{
