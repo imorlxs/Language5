@@ -31,6 +31,13 @@ const char* const BigramCounter::DEFAULT_VALID_CHARACTERS = "abcdefghijklmnopqrs
 
 BigramCounter::BigramCounter(std::string validChars) {
     _validCharacters = validChars;
+    int size = _validCharacters.size();
+    allocate(this->getSize());
+    for (int i = 0; i < size; i++){
+        for (int j = 0; j < size; j++){
+            _frequency[i][j] = 0;
+        }
+    }
 
 }
 //javi
@@ -146,7 +153,6 @@ int BigramCounter::operator()(int row, int column) {
 }
 
 void BigramCounter::allocate(int size) {
-
     _frequency = new int*[size];
     for (int i = 0; i < size; i++) {
         _frequency[i] = new int [size];
@@ -154,7 +160,7 @@ void BigramCounter::allocate(int size) {
 }
 
 void BigramCounter::deallocate() {
-    for (int i = 0; i < _rows; i++) {
+    for (int i = 0; i < this->getSize(); i++) {
         delete[] _frequency[i];
     }
     delete[] _frequency;
