@@ -30,6 +30,7 @@ const char* const BigramCounter::DEFAULT_VALID_CHARACTERS = "abcdefghijklmnopqrs
 //isaac
 
 BigramCounter::BigramCounter(std::string validChars) {
+    _validCharacters = validChars;
 
 }
 //javi
@@ -39,8 +40,8 @@ BigramCounter::BigramCounter(const BigramCounter& orig) {
 }
 //isaac
 
-~BigramCounter() {
-
+BigramCounter::~BigramCounter() {
+    deallocate();
 }
 //javi
 
@@ -144,12 +145,11 @@ int BigramCounter::operator()(int row, int column) {
     return _frequency[row][column];
 }
 
-void BigramCounter::allocate(int rows, int columns) {
-    _rows = rows;
-    _columns = columns;
-    _frequency = new int*[_rows];
-    for (int i = 0; i < _rows; i++) {
-        _frequency[i] = new int [_columns];
+void BigramCounter::allocate(int size) {
+
+    _frequency = new int*[size];
+    for (int i = 0; i < size; i++) {
+        _frequency[i] = new int [size];
     }
 }
 
