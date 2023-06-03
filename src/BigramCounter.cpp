@@ -120,11 +120,11 @@ void BigramCounter::calculateFrequencies(char* fileName) {
     if (fin) {
         fin >> text;
         if (!fin) {
-            throw std::ios_base::failure(string("error de lectura del fichero\n"))
+            throw std::ios_base::failure(string("error de lectura del fichero\n"));
         }
         fin.close();
     } else {
-        throw std::ios_base::failure(string("error de apertura del fichero\n"))
+        throw std::ios_base::failure(string("error de apertura del fichero\n"));
     }
 
     Bigram *bigrams;
