@@ -172,7 +172,14 @@ void BigramCounter::deallocate() {
     }
     delete[] _frequency;
 }
-
+int& BigramCounter::findBigram (Bigram bigram){
+    int row = _validCharacters.find(bigram[0]);
+    int col = _validCharacters.find(bigram[1]);
+    
+    if (row >= 0 && col >= 0){
+        return _frequency[row][col];
+    }
+}
 //COMO SABER SI UN BIGRAMA ES VALIDO
 //_validCharacters.find(bigram[0]);
 //_validCharacters.find(bigram[1]);
