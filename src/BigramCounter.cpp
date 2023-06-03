@@ -13,6 +13,7 @@
  */
 
 #include "BigramCounter.h"
+using namespace std;
 
 /**
  * DEFAULT_VALID_CHARACTERS is a c-string that contains the set of characters
