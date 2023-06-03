@@ -134,10 +134,13 @@ int BigramCounter::operator()(int row, int column){
 }
 
 void BigramCounter::allocate(int rows, int columns){
-    _frequency = new int*[rows];
-    for (int i = 0; i < rows; i++){
-        _frequency[i] = new int [columns];
+   _rows = rows;
+   _columns = columns;
+    _frequency = new int*[_rows];
+    for (int i = 0; i < _rows; i++){
+        _frequency[i] = new int [_columns];
     }
 }
 
+void BigramCounter::deallocate(){
 
