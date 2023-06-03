@@ -37,7 +37,7 @@ BigramCounter::BigramCounter(const BigramCounter& orig){
 }
 //isaac
 ~BigramCounter(){
-    for()
+  
 }
 //javi
 int BigramCounter::getSize() const{
@@ -131,6 +131,13 @@ int BigramCounter::operator()(int row, int column) const{
 //I
 int BigramCounter::operator()(int row, int column){
     
+}
+
+void BigramCounter::allocate(int rows, int columns){
+    _frequency = new int*[rows];
+    for (int i = 0; i < rows; i++){
+        _frequency[i] = new int [columns];
+    }
 }
 
 
