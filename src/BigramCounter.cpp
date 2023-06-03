@@ -72,7 +72,7 @@ BigramCounter& BigramCounter::operator=(const BigramCounter& orig){
     _frequency = new int[orig.getSize()];
     int k = 0;
     for (int i=0; i < orig.getSize(); i++){
-        for (j = 0; j < orig.getSize(); j++){
+        for (int j = 0; j < orig.getSize(); j++){
             _frequency[i][j] = orig.toLanguage.at(k);
             k++;
         }
