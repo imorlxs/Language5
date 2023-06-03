@@ -89,12 +89,12 @@ bool isValidCharacter(char character, const string& validCharacters) {
     return validCharacters.find(character) != string::npos;
 }
 
-std::ostream operator<<(std::ostream& os, const Bigram& bigram) {
+std::ostream &operator<<(std::ostream& os, const Bigram& bigram) {
     os << bigram.getText();
     return os;
 }
 
-std::istream operator>>(std::istream& is, Bigram& bigram) {
+std::istream &operator>>(std::istream& is, Bigram& bigram) {
     char c;
     c = is.get();
     bigram[0] = c;
