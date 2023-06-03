@@ -155,7 +155,7 @@ private:
      * @param column Column of the element. Input parameter
      * @return A const reference to the element at the given position
      */
-    int operator()(int row, int column) const;
+    const int& operator()(int row, int column) const;
 
     /**
      * @brief Overloading of the () operator to access to the element at a 
@@ -165,11 +165,13 @@ private:
      * @param column Column of the element. Input parameter
      * @return A reference to the element at the given position
      */
-    int operator()(int row, int column);
+    int& operator()(int row, int column);
     
     void allocate(int rows, int columns);
     
     void deallocate();
+    
+    int findBigram (Bigram bigram);
 };
 
 #endif /* BIGRAM_COUNTER_H */
