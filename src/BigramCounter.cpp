@@ -93,8 +93,7 @@ void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency = 0) {
 
 BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
     this->~BigramCounter();
-    *_frequency = new int[orig.getSize()];
-    _frequency = new int[orig.getSize()];
+    allocate(orig.getSize());
     int k = 0;
     for (int i = 0; i < orig.getSize(); i++) {
         for (int j = 0; j < orig.getSize(); j++) {
@@ -109,7 +108,7 @@ BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
 //I
 
 BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs) {
-
+  
 }
 //J
 
@@ -131,6 +130,7 @@ void BigramCounter::calculateFrequencies(char* fileName) {
     bigrams = new Bigram[text.size()];
     BigramFreq *bigramfreq;
     bigramfreq = new BigramFreq[text.size()];
+    //Hay que hacerlo directamente sobre la matriz 2D
     Language l1;
     p = 0;
     for (int i = 0; i < text.size(); i++) {
@@ -175,3 +175,5 @@ void BigramCounter::deallocate() {
     delete[] _frequency;
 }
 
+
+  _validCharacters.find(bigram[0])
