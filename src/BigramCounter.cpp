@@ -171,12 +171,16 @@ void BigramCounter::deallocate() {
     }
     delete[] _frequency;
 }
-int& BigramCounter::findBigram (Bigram bigram){
+
+int& BigramCounter::findBigram(Bigram bigram) {
     int row = _validCharacters.find(bigram[0]);
     int col = _validCharacters.find(bigram[1]);
-    
-    if (row >= 0 && col >= 0){
+
+    if (row >= 0 && col >= 0) {
         return _frequency[row][col];
+    } else {
+        throw std::out_of_range(string("int& BigramCounter::findBigram(Bigram bigram): ") +
+                "invalid bigram " + bigram.getText());
     }
     else{
         return -1;
