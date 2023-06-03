@@ -143,4 +143,9 @@ void BigramCounter::allocate(int rows, int columns){
 }
 
 void BigramCounter::deallocate(){
+    for (int i = 0; i < _rows; i++){
+        delete[] _frequency[i];
+    }
+    delete[] _frequency;
+}
 
