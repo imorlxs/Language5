@@ -74,12 +74,12 @@ int BigramCounter::getNumberActiveBigrams() const {
 bool BigramCounter::setFrequency(const Bigram& bigram, int frequency) {
     bool founded = false;
     int n;
-    n = this->toLanguage().findBigram(bigram); // Lo suyo sería buscar las dos letras en el string validchars y acceder a su posicion en la matriz
+    n = this->findBigram(bigram); // Lo suyo sería buscar las dos letras en el string validchars y acceder a su posicion en la matriz
     if (n == -1) {
         founded = false;
     } else {
         founded = true;
-        this->toLanguage().at(n) = frequency; // Hay que cambiarlo directamente en la matriz
+        this->findBigram(bigram) = frequency; // Hay que cambiarlo directamente en la matriz
     }
     return founded;
 }
@@ -129,18 +129,17 @@ void BigramCounter::calculateFrequencies(char* fileName) {
     BigramFreq *bigramfreq;
     bigramfreq = new BigramFreq[text.size()];
     //Hay que hacerlo directamente sobre la matriz 2D
-    Language l1;
-    int p = 0;
     for (int i = 0; i < text.size(); i++) {
-        bigrams[p].at(0) = text[i];
-        bigrams[p].at(1) = text[i + 1];
-        bigramfreq[p].setBigram(bigrams[p]);
-        bigramfreq[p].setFrequency(1);
-        l1.append(bigramfreq[p]);
-        p++;
+        bigrams[i].at(0) = text[i];
+        bigrams[i].at(1) = text[i + 1];
+        if (this->findBigram(bigrams[i]) >= 1){
+            findBigram(bigrams[i])++;
+        }
+        else{
+            this->findBigram(bigrams[i]) = 1;           
+        }
     }
-    l1.sort();
-    l1.save(fileName);
+    
 
 }
 //I
@@ -150,12 +149,12 @@ Language BigramCounter::toLanguage() const {
 }
 //J
 
-int BigramCounter::operator()(int row, int column) const {
+const int& BigramCounter::operator()(int row, int column) const {
     return _frequency[row][column];
 }
 //I
 
-int BigramCounter::operator()(int row, int column) {
+int& BigramCounter::operator()(int row, int column) {
     return _frequency[row][column];
 }
 
@@ -178,6 +177,9 @@ int& BigramCounter::findBigram (Bigram bigram){
     
     if (row >= 0 && col >= 0){
         return _frequency[row][col];
+    }
+    else{
+        return -1;
     }
 }
 //COMO SABER SI UN BIGRAMA ES VALIDO
