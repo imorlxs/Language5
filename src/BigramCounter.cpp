@@ -14,7 +14,6 @@
 
 #include "BigramCounter.h"
 
-
 /**
  * DEFAULT_VALID_CHARACTERS is a c-string that contains the set of characters
  * that will be considered as part of a word (valid chars). 
