@@ -13,7 +13,7 @@
  */
 
 #include "BigramCounter.h"
-#include <fstream>
+
 
 /**
  * DEFAULT_VALID_CHARACTERS is a c-string that contains the set of characters
@@ -74,7 +74,7 @@ int BigramCounter::getNumberActiveBigrams() const {
 bool BigramCounter::setFrequency(const Bigram& bigram, int frequency) {
     bool founded = false;
     int n;
-    n = this->toLanguage().findBigram(bigram);
+    n = this->toLanguage().findBigram(bigram); // Lo suyo sería buscar las dos letras en el string validchars y acceder a su posicion en la matriz
     if (n == -1) {
         founded = false;
     } else {
