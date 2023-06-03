@@ -32,7 +32,7 @@ const char* const BigramCounter::DEFAULT_VALID_CHARACTERS = "abcdefghijklmnopqrs
 BigramCounter::BigramCounter(std::string validChars) {
     _validCharacters = validChars;
     int size = _validCharacters.size();
-    allocate(this->getSize());
+    allocate(size);
     for (int i = 0; i < size; i++){
         for (int j = 0; j < size; j++){
             _frequency[i][j] = 0;
