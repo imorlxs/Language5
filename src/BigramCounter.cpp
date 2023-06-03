@@ -182,9 +182,6 @@ int& BigramCounter::findBigram(Bigram bigram) {
         throw std::out_of_range(string("int& BigramCounter::findBigram(Bigram bigram): ") +
                 "invalid bigram " + bigram.getText());
     }
-    else{
-        return -1;
-    }
 }
 //COMO SABER SI UN BIGRAMA ES VALIDO
 //_validCharacters.find(bigram[0]);
