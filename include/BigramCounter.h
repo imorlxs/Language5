@@ -137,6 +137,8 @@ public:
 
 private:
     int** _frequency; ///< 2D matrix with the frequency of each bigram
+    int _rows; ///< Numbers of rows available
+    int _columns; ///< Numbers of columns available
 
     /**
      * Set of characters that are considered as part of a word. Any other 
@@ -164,6 +166,10 @@ private:
      * @return A reference to the element at the given position
      */
     int operator()(int row, int column);
+    
+    void allocate(int rows, int columns);
+    
+    void deallocate();
 };
 
 #endif /* BIGRAM_COUNTER_H */
