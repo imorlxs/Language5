@@ -33,8 +33,8 @@ BigramCounter::BigramCounter(std::string validChars) {
     _validCharacters = validChars;
     int size = _validCharacters.size();
     allocate(size);
-    for (int i = 0; i < size; i++){
-        for (int j = 0; j < size; j++){
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             _frequency[i][j] = 0;
         }
     }
@@ -60,9 +60,9 @@ int BigramCounter::getSize() const {
 int BigramCounter::getNumberActiveBigrams() const {
     int size = this->getSize();
     int activeBigrams = 0;
-    for (int i = 0; i < size; i++){
-        for (int j = 0; j < size; j++){
-            if(_frequency[i][j] > 0){
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (_frequency[i][j] > 0) {
                 activeBigrams++;
             }
         }
@@ -92,23 +92,21 @@ void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency = 0) {
 //J
 
 BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
-    this->~BigramCounter();
-    allocate(orig.getSize());
-    int k = 0;
-    for (int i = 0; i < orig.getSize(); i++) {
-        for (int j = 0; j < orig.getSize(); j++) {
-            _frequency[i][j] = orig.toLanguage.at(k);
-            k++;
+    if (this != &orig) {
+        this->~BigramCounter();
+        allocate(orig.getSize());
+        for (int i = 0; i < orig.getSize(); i++) {
+            for (int j = 0; j < orig.getSize(); j++) {
+                _frequency[i][j] = orig(i, j);
+            }
         }
     }
-
     return *this;
-
 }
 //I
 
 BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs) {
-  
+
 }
 //J
 
@@ -132,7 +130,7 @@ void BigramCounter::calculateFrequencies(char* fileName) {
     bigramfreq = new BigramFreq[text.size()];
     //Hay que hacerlo directamente sobre la matriz 2D
     Language l1;
-    p = 0;
+    int p = 0;
     for (int i = 0; i < text.size(); i++) {
         bigrams[p].at(0) = text[i];
         bigrams[p].at(1) = text[i + 1];
@@ -175,5 +173,7 @@ void BigramCounter::deallocate() {
     delete[] _frequency;
 }
 
-
-  _validCharacters.find(bigram[0])
+//COMO SABER SI UN BIGRAMA ES VALIDO
+//_validCharacters.find(bigram[0]);
+//_validCharacters.find(bigram[1]);
+// LOS DOS DEBEN SER MAYORES O IGUAL A 0
