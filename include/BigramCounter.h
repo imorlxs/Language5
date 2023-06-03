@@ -136,9 +136,7 @@ public:
     Language toLanguage() const;
 
 private:
-    int** _frequency; ///< 2D matrix with the frequency of each bigram
-    int _rows; ///< Numbers of rows available
-    int _columns; ///< Numbers of columns available
+    int** _frequency; ///< 2D matrix with the frequency of each bigramA
 
     /**
      * Set of characters that are considered as part of a word. Any other 
