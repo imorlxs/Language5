@@ -95,6 +95,7 @@ BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
     if (this != &orig) {
         this->~BigramCounter();
         allocate(orig.getSize());
+        _validCharacters =  orig.getValidCharacters();
         for (int i = 0; i < orig.getSize(); i++) {
             for (int j = 0; j < orig.getSize(); j++) {
                 _frequency[i][j] = orig(i, j);
@@ -182,6 +183,10 @@ int& BigramCounter::findBigram(Bigram bigram) {
         throw std::out_of_range(string("int& BigramCounter::findBigram(Bigram bigram): ") +
                 "invalid bigram " + bigram.getText());
     }
+}
+
+std::string BigramCounter::getValidCharacters() const{
+    return _validCharacters;
 }
 //COMO SABER SI UN BIGRAMA ES VALIDO
 //_validCharacters.find(bigram[0]);
