@@ -171,7 +171,9 @@ private:
     
     void deallocate();
     
-    int findBigram (Bigram bigram);
+    int& findBigram (Bigram bigram);
+    
+    std::string getValidCharacters() const;
 };
 
 #endif /* BIGRAM_COUNTER_H */
