@@ -88,7 +88,7 @@ bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
 }
 // I
 
-void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency = 0)
+void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency)
 {
     if (frequency == 0) {
         this->findBigram(bigram)++;
