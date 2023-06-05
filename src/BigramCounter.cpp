@@ -82,7 +82,7 @@ bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
     if (_validCharacters.find(bigram[0]) < 0 || _validCharacters.find(bigram[1]) < 0) {
         founded = false;
     } else {
-        founded = false;
+        founded = true;
         this->findBigram(bigram) = frequency;
     }
     return founded;
