@@ -167,7 +167,7 @@ private:
      */
     int& operator()(int row, int column);
     
-    void allocate(int rows, int columns);
+    void allocate(int size);
     
     void deallocate();
     
