@@ -252,7 +252,7 @@ std::ostream &operator<<(std::ostream& os, const Language& language) {
     return os;
 }
 
-std::istream &operator>>(std::istream& is, const Language& language) {
+std::istream &operator>>(std::istream& is, Language& language) {
     //language.~Language();
     std::string id;
     int num_bigrams;
