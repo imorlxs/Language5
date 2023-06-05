@@ -129,7 +129,7 @@ BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs)
                 continue;
             }
 
-            _frequency[i][j] += rhs._frequency[row][col];
+            _frequency[i][j] += rhs(row,col);
 
         }
     }
