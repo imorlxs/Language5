@@ -171,6 +171,18 @@ void BigramCounter::calculateFrequencies(char* fileName)
 
 Language BigramCounter::toLanguage() const{
     Language language(this->getNumberActiveBigrams());
+    int size = this->getSize();
+    int counter = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (_frequency[i][j] > 0) {
+                Bigram bigram(_validCharacters[i], _validCharacters[j]);
+                language[counter].setBigram(bigram);
+                language[counter].setFrequency(_frequency[i][j]);
+                counter++;
+            }
+        }
+    }
 
 }
 // J
