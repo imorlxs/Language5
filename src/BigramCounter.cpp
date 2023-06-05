@@ -172,8 +172,9 @@ void BigramCounter::calculateFrequencies(char* fileName)
 }
 // I
 
-Language BigramCounter::toLanguage() const
-{
+Language BigramCounter::toLanguage() const{
+    Language language(this->getNumberActiveBigrams());
+    
 }
 // J
 
