@@ -90,7 +90,7 @@ bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
 }
 
 bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2) {
-    return (!bigramFreq2 < bigramFreq1);
+    return !(bigramFreq2 < bigramFreq1);
 }
 
 bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
