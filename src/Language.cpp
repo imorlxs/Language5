@@ -203,11 +203,11 @@ void Language::swap(int first, int second) {
 }
 
 BigramFreq& Language::operator[](int index) const {
-    return this->at(index);
+    return _vectorBigramFreq[index]; 
 }
 
 BigramFreq& Language::operator[](int index) {
-    return this->at(index);
+    return _vectorBigramFreq[index];
 }
 
 Language& Language::operator+=(const Language& language) {
@@ -242,12 +242,11 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     delete[] vector1;
     vector1 = vector2;
 }
-//¿Por qué no usar el método toString()?
 std::ostream &operator<<(std::ostream& os, const Language& language) {
     os << language.getLanguageId() << endl;
     os << language.getSize() << endl;
     for (int i = 0; i < language.getSize(); i++) {
-        os << language.at(i) << endl;
+        os << language[i] << endl;
     }
     return os;
 }
