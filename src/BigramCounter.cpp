@@ -127,10 +127,13 @@ BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs)
         }
         for(int j = 0; j < _validCharacters.size(); j++){
             int col = rhs._validCharacters.find(_validCharacters[j]);
+            
             if(col < 0){
                 continue;
             }
-            
+
+            _frequency[i][j] += rhs._frequency[row][col];
+
         }
     }
 }
