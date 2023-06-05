@@ -79,13 +79,12 @@ int BigramCounter::getNumberActiveBigrams() const
 bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
 {
     bool founded = false;
-    int n;
-    n = this->findBigram(bigram); // Lo suyo sería buscar las dos letras en el string validchars y acceder a su posicion en la matriz
-    if (n >= 0) {
-        founded = true;
-        this->findBigram(bigram) = frequency; // Hay que cambiarlo directamente en la matriz
+    if (_validCharacters.find(bigram[0]) < 0 || _validCharacters.find(bigram[1]) < 0) {
+        founded = false;
+         // Hay que cambiarlo directamente en la matriz
     } else {
         founded = false;
+        this->findBigram(bigram) = frequency;
     }
     return founded;
 }
@@ -174,7 +173,7 @@ void BigramCounter::calculateFrequencies(char* fileName)
 
 Language BigramCounter::toLanguage() const{
     Language language(this->getNumberActiveBigrams());
-    
+
 }
 // J
 
