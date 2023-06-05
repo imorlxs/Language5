@@ -81,7 +81,6 @@ bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
     bool founded = false;
     if (_validCharacters.find(bigram[0]) < 0 || _validCharacters.find(bigram[1]) < 0) {
         founded = false;
-         // Hay que cambiarlo directamente en la matriz
     } else {
         founded = false;
         this->findBigram(bigram) = frequency;
