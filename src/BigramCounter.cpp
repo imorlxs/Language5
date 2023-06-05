@@ -74,8 +74,7 @@ int BigramCounter::getNumberActiveBigrams() const
     }
     return activeBigrams;
 }
-// J
-//
+
 bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
 {
     bool founded = false;
@@ -211,7 +210,7 @@ int& BigramCounter::findBigram(Bigram bigram)
     if (row >= 0 && col >= 0) {
         return _frequency[row][col];
     } else {
-        throw std::out_of_range(string("int& BigramCounter::findBigram(Bigram bigram): ") + "invalid bigram " + bigram.getText());
+        throw std::invalid_argument(string("int& BigramCounter::findBigram(Bigram bigram): ") + "invalid bigram " + bigram.getText());
     }
 }
 
