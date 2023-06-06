@@ -3,23 +3,24 @@
 // * Curso 2022/2023
 // */
 //
-///** 
+///**
 // * @file JOIN.cpp
 // * @author Francisco Javier Cáceres Martín <javicaceres@correo.ugr.es>
 // * @author Isaac Morales Santana <imorsan@correo.ugr.es>
 
 //// LO HACE ISAAC
 //
-#include <iostream>
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 /**
  * Shows help about the use of this program in the given output stream
  * @param outputStream The output stream where the help will be shown (for example,
- * cout, cerr, etc) 
+ * cout, cerr, etc)
  */
-void showEnglishHelp(ostream& outputStream) {
+void showEnglishHelp(ostream& outputStream)
+{
     outputStream << "Error, run with the following parameters:" << endl;
     outputStream << "JOIN [-t|-b] [-o <outputFile.bgr>] <file1.bgr> [<file2.bgr> ... <filen.bgr>] " << endl;
     outputStream << "       join the Language files <file1.bgr> <file2.bgr> ... into <outputFile.bgr>" << endl;
@@ -32,18 +33,52 @@ void showEnglishHelp(ostream& outputStream) {
 
 /**
  * This program reads an undefined number of Language objects from the files
- * passed as parameters to main(). It obtains as result the union of all the 
- * input Language objects. The result is then sorted by decreasing order of 
- * frequency and alphabetical order of bigrams when there is any tie in 
- * frequencies. Finally, the resulting Language is saved in an output file. The 
- * program must have at least an output file. 
+ * passed as parameters to main(). It obtains as result the union of all the
+ * input Language objects. The result is then sorted by decreasing order of
+ * frequency and alphabetical order of bigrams when there is any tie in
+ * frequencies. Finally, the resulting Language is saved in an output file. The
+ * program must have at least an output file.
  * Running example:
  * >  JOIN [-t|-b] [-o <outputFile.bgr>] <file1.bgr> [<file2.bgr> ... <filen.bgr>]
  * @param argc The number of command line parameters
  * @param argv The vector of command line parameters (cstrings)
  * @return 0 If there is no error; a value > 0 if error
  */
-int main(int argc, char* argv[]) {
- 
-}
 
+int main(int argc, char* argv[])
+{
+    int parameters = 1;
+    bool isTextMode = true;
+    char* outputFile = "outputFile.bgr";
+    
+    //Filtro de parametros
+    if (argc < 2) {
+        showEnglishHelp(cout);
+        exit(1);
+    } else {
+        string s = argv[1];
+        if (s[0] == '-') {
+            if (s == "-t") {
+                s = argv[2];
+                if (s == "-o") {
+                    parameters = 4;
+                    outputFile = argv[3]
+                }
+            }
+            if (s == "-b") {
+                s = argv[2];
+                if (s == "-o") {
+                    parameters = 4;
+                    outputFile = argv[3];
+                }
+                isTextMode = false;
+            }
+            if (s == "-o") {
+                parameters = 3;
+                outputFile = argv[2];
+            }
+        }
+    }
+
+
+}
