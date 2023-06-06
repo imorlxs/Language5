@@ -134,7 +134,7 @@ void Language::sort() {
     }
 }
 
-void Language::save(const char fileName[]) const {
+void Language::save(const char fileName[], char mode) const {
     ofstream fout;
     fout.open(fileName);
     if (fout) {
