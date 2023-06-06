@@ -7,7 +7,7 @@
  * @file JOIN.cpp
  * @author Francisco Javier Cáceres Martín <javicaceres@correo.ugr.es>
  * @author Isaac Morales Santana <imorsan@correo.ugr.es>
-*/
+ */
 
 #include "Language.h"
 #include <iostream>
@@ -49,8 +49,8 @@ int main(int argc, char* argv[])
     int firstParameter = 1;
     bool isTextMode = true;
     char* outputFile = "outputFile.bgr";
-    
-    //Filtro de parametros
+
+    // Filtro de parametros
     if (argc < 2) {
         showEnglishHelp(cout);
         exit(1);
@@ -59,22 +59,35 @@ int main(int argc, char* argv[])
         if (s[0] == '-') {
             if (s == "-t") {
                 s = argv[2];
-                if (s == "-o") {
-                    firstParameter = 4;
-                    outputFile = argv[3];
+                if (s[0] == '-') {
+                    if (s == "-o") {
+                        firstParameter = 4;
+                        outputFile = argv[3];
+                    } else {
+                        showEnglishHelp(cout);
+                        exit(1);
+                    }
                 }
             }
             if (s == "-b") {
                 s = argv[2];
-                if (s == "-o") {
-                    firstParameter = 4;
-                    outputFile = argv[3];
+                if (s[0] == '-') {
+                    if (s == "-o") {
+                        firstParameter = 4;
+                        outputFile = argv[3];
+                    } else {
+                        showEnglishHelp(cout);
+                        exit(1);
+                    }
                 }
                 isTextMode = false;
             }
             if (s == "-o") {
                 firstParameter = 3;
                 outputFile = argv[2];
+            } else {
+                showEnglishHelp(cout);
+                exit(1);
             }
         }
     }
@@ -82,13 +95,12 @@ int main(int argc, char* argv[])
     Language output;
     Language buffer;
     output.load(argv[firstParameter]);
-    if (argc > firstParameter){
-    firstParameter++;
-        for (int i = firstParameter; i < argc - firstParameter; i++){
-        buffer.load(argv[i]);
-        output.join(buffer);
+    if (argc > firstParameter) {
+        firstParameter++;
+        for (int i = firstParameter; i < argc - firstParameter; i++) {
+            buffer.load(argv[i]);
+            output.join(buffer);
         }
-    
     }
     output.sort();
     output.save(outputFile);
