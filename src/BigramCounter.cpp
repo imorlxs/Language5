@@ -129,7 +129,7 @@ void BigramCounter::calculateFrequencies(char* fileName)
     std::string text;
     fin.open(fileName);
     if (fin) {
-        // Esto solo cogería la primera palabra, no? getline() podria ser
+        // Esto solo cogería la primera palabra, no? Utiliza while(fin >> text)
         fin >> text;
         if (!fin) {
             throw std::ios_base::failure(string("error de lectura del fichero\n"));

@@ -40,5 +40,11 @@ void showEnglishHelp(ostream& outputStream) {
  * @return 0 If there is no error; a value > 0 if error
  */
 int main(int argc, char *argv[]) {
+    if (argc < 3){
+        showEnglishHelp(cout);
+        exit(EXIT_FAILURE);
+    }
+
+    return EXIT_SUCCESS;
     
 }
