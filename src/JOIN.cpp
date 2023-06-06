@@ -1,15 +1,14 @@
-///*
-// * Metodología de la Programación: Language5
-// * Curso 2022/2023
-// */
-//
-///**
-// * @file JOIN.cpp
-// * @author Francisco Javier Cáceres Martín <javicaceres@correo.ugr.es>
-// * @author Isaac Morales Santana <imorsan@correo.ugr.es>
+/*
+ * Metodología de la Programación: Language5
+ * Curso 2022/2023
+ */
 
-//// LO HACE ISAAC
-//
+/**
+ * @file JOIN.cpp
+ * @author Francisco Javier Cáceres Martín <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
+*/
+
 #include "Language.h"
 #include <iostream>
 using namespace std;
