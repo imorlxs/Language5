@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Language5_git
+PROJECTNAME=Language5
 
 # Active Configuration
 DEFAULTCONF=Debug

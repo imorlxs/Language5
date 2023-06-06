@@ -19,9 +19,6 @@
       <itemPath>src/Bigram.cpp</itemPath>
       <itemPath>src/BigramCounter.cpp</itemPath>
       <itemPath>src/BigramFreq.cpp</itemPath>
-      <itemPath>src/CLASSIFY.cpp</itemPath>
-      <itemPath>src/JOIN.cpp</itemPath>
-      <itemPath>src/LEARN.cpp</itemPath>
       <itemPath>src/Language.cpp</itemPath>
       <itemPath>src/metamain.cpp</itemPath>
     </logicalFolder>
@@ -70,12 +67,6 @@
       </item>
       <item path="src/BigramFreq.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/CLASSIFY.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JOIN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/LEARN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="src/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/metamain.cpp" ex="false" tool="1" flavor2="0">
@@ -116,12 +107,6 @@
       </item>
       <item path="src/BigramFreq.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/CLASSIFY.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JOIN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/LEARN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="src/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/metamain.cpp" ex="false" tool="1" flavor2="0">
@@ -139,6 +124,7 @@
           <incDir>
             <pElem>include</pElem>
           </incDir>
+          <commandLine>-D LEARN</commandLine>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/${CND_CONF}</output>
@@ -157,12 +143,6 @@
       <item path="src/BigramCounter.cpp" ex="false" tool="1" flavor2="11">
       </item>
       <item path="src/BigramFreq.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/CLASSIFY.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JOIN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/LEARN.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -181,6 +161,7 @@
           <incDir>
             <pElem>include</pElem>
           </incDir>
+          <commandLine>-D JOIN</commandLine>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/${CND_CONF}</output>
@@ -199,12 +180,6 @@
       <item path="src/BigramCounter.cpp" ex="false" tool="1" flavor2="11">
       </item>
       <item path="src/BigramFreq.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/CLASSIFY.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JOIN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/LEARN.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -223,6 +198,7 @@
           <incDir>
             <pElem>include</pElem>
           </incDir>
+          <commandLine>-D CLASSIFY</commandLine>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/${CND_CONF}</output>
@@ -241,12 +217,6 @@
       <item path="src/BigramCounter.cpp" ex="false" tool="1" flavor2="11">
       </item>
       <item path="src/BigramFreq.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/CLASSIFY.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JOIN.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/LEARN.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 {
     int firstParameter = 1;
     bool isTextMode = true;
-    char* outputFile = "outputFile.bgr";
+    char const* outputFile = "outputFile.bgr";
 
     // Filtro de parametros
     if (argc < 2) {

@@ -38,9 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Bigram.o \
 	${OBJECTDIR}/src/BigramCounter.o \
 	${OBJECTDIR}/src/BigramFreq.o \
-	${OBJECTDIR}/src/CLASSIFY.o \
-	${OBJECTDIR}/src/JOIN.o \
-	${OBJECTDIR}/src/LEARN.o \
 	${OBJECTDIR}/src/Language.o \
 	${OBJECTDIR}/src/metamain.o
 
@@ -49,8 +46,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-D CLASSIFY
+CXXFLAGS=-D CLASSIFY
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -83,21 +80,6 @@ ${OBJECTDIR}/src/BigramFreq.o: src/BigramFreq.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramFreq.o src/BigramFreq.cpp
-
-${OBJECTDIR}/src/CLASSIFY.o: src/CLASSIFY.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/CLASSIFY.o src/CLASSIFY.cpp
-
-${OBJECTDIR}/src/JOIN.o: src/JOIN.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/JOIN.o src/JOIN.cpp
-
-${OBJECTDIR}/src/LEARN.o: src/LEARN.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LEARN.o src/LEARN.cpp
 
 ${OBJECTDIR}/src/Language.o: src/Language.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

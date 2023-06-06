@@ -38,9 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Bigram.o \
 	${OBJECTDIR}/src/BigramCounter.o \
 	${OBJECTDIR}/src/BigramFreq.o \
-	${OBJECTDIR}/src/CLASSIFY.o \
-	${OBJECTDIR}/src/JOIN.o \
-	${OBJECTDIR}/src/LEARN.o \
 	${OBJECTDIR}/src/Language.o \
 	${OBJECTDIR}/src/metamain.o
 
@@ -63,11 +60,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5_git
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5_git: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5_git ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/language5 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/src/Bigram.o: src/Bigram.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -83,21 +80,6 @@ ${OBJECTDIR}/src/BigramFreq.o: src/BigramFreq.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramFreq.o src/BigramFreq.cpp
-
-${OBJECTDIR}/src/CLASSIFY.o: src/CLASSIFY.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/CLASSIFY.o src/CLASSIFY.cpp
-
-${OBJECTDIR}/src/JOIN.o: src/JOIN.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/JOIN.o src/JOIN.cpp
-
-${OBJECTDIR}/src/LEARN.o: src/LEARN.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LEARN.o src/LEARN.cpp
 
 ${OBJECTDIR}/src/Language.o: src/Language.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
