@@ -40,5 +40,5 @@ void showEnglishHelp(ostream& outputStream) {
  * @return 0 If there is no error; a value > 0 if error
  */
 int main(int argc, char *argv[]) {
- 
+    
 }
