@@ -37,12 +37,10 @@ BigramCounter::BigramCounter(std::string validChars)
         }
     }
 }
-// javi
-//  El constructor de copia no se puede hacer así porque se llama al destructor y no hay ningún
-// objeto creado
+
 BigramCounter::BigramCounter(const BigramCounter& orig)
 {
-    *this = orig;
+    this->copyFrom(orig);
 }
 
 BigramCounter::~BigramCounter()
@@ -109,18 +107,17 @@ BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs)
 {
     for (int i = 0; i < _validCharacters.size(); i++) {
         int row = rhs._validCharacters.find(_validCharacters[i]);
-        if(row < 0){
+        if (row < 0) {
             continue;
         }
-        for(int j = 0; j < _validCharacters.size(); j++){
+        for (int j = 0; j < _validCharacters.size(); j++) {
             int col = rhs._validCharacters.find(_validCharacters[j]);
 
-            if(col < 0){
+            if (col < 0) {
                 continue;
             }
 
-            _frequency[i][j] += rhs(row,col);
-
+            _frequency[i][j] += rhs(row, col);
         }
     }
     return *this;
@@ -132,7 +129,7 @@ void BigramCounter::calculateFrequencies(char* fileName)
     std::string text;
     fin.open(fileName);
     if (fin) {
-        //Esto solo cogería la primera palabra, no? getline() podria ser
+        // Esto solo cogería la primera palabra, no? getline() podria ser
         fin >> text;
         if (!fin) {
             throw std::ios_base::failure(string("error de lectura del fichero\n"));
@@ -158,7 +155,8 @@ void BigramCounter::calculateFrequencies(char* fileName)
     }
 }
 
-Language BigramCounter::toLanguage() const{
+Language BigramCounter::toLanguage() const
+{
     Language language(this->getNumberActiveBigrams());
     int size = this->getSize();
     int counter = 0;
@@ -173,7 +171,6 @@ Language BigramCounter::toLanguage() const{
         }
     }
     return language;
-
 }
 
 const int& BigramCounter::operator()(int row, int column) const
@@ -211,6 +208,17 @@ int& BigramCounter::findBigram(Bigram bigram)
         return _frequency[row][col];
     } else {
         throw std::invalid_argument(string("int& BigramCounter::findBigram(Bigram bigram): ") + "invalid bigram " + bigram.getText());
+    }
+}
+
+void BigramCounter::copyFrom(const BigramCounter& orig)
+{
+    allocate(orig.getSize());
+    _validCharacters = orig._validCharacters;
+    for (int i = 0; i < orig.getSize(); i++) {
+        for (int j = 0; j < orig.getSize(); j++) {
+            _frequency[i][j] = orig(i, j);
+        }
     }
 }
 

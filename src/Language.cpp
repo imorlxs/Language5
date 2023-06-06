@@ -139,7 +139,10 @@ void Language::save(const char fileName[], char mode) const {
     fout.open(fileName);
     if (fout) {
         fout << MAGIC_STRING_T << endl;
-        fout << *this;
+        if (mode == 't'){
+            fout << *this;
+        }
+
         if (!fout) {
             throw std::ios_base::failure(string("error_de_escritura_del_fichero\n"));
         }
@@ -249,7 +252,6 @@ std::ostream &operator<<(std::ostream& os, const Language& language) {
 }
 
 std::istream &operator>>(std::istream& is, Language& language) {
-    //language.~Language();
     std::string id;
     int num_bigrams;
     is >> id;
