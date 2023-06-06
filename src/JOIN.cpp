@@ -10,7 +10,7 @@
 
 //// LO HACE ISAAC
 //
-#include <fstream>
+#include "Language.h"
 #include <iostream>
 using namespace std;
 
@@ -21,7 +21,7 @@ using namespace std;
  */
 void showEnglishHelp(ostream& outputStream)
 {
-    outputStream << "Error, run with the following parameters:" << endl;
+    outputStream << "Error, run with the following Parameters:" << endl;
     outputStream << "JOIN [-t|-b] [-o <outputFile.bgr>] <file1.bgr> [<file2.bgr> ... <filen.bgr>] " << endl;
     outputStream << "       join the Language files <file1.bgr> <file2.bgr> ... into <outputFile.bgr>" << endl;
     outputStream << endl;
@@ -47,7 +47,7 @@ void showEnglishHelp(ostream& outputStream)
 
 int main(int argc, char* argv[])
 {
-    int parameters = 1;
+    int firstParameter = 1;
     bool isTextMode = true;
     char* outputFile = "outputFile.bgr";
     
@@ -61,24 +61,36 @@ int main(int argc, char* argv[])
             if (s == "-t") {
                 s = argv[2];
                 if (s == "-o") {
-                    parameters = 4;
+                    firstParameter = 4;
                     outputFile = argv[3];
                 }
             }
             if (s == "-b") {
                 s = argv[2];
                 if (s == "-o") {
-                    parameters = 4;
+                    firstParameter = 4;
                     outputFile = argv[3];
                 }
                 isTextMode = false;
             }
             if (s == "-o") {
-                parameters = 3;
+                firstParameter = 3;
                 outputFile = argv[2];
             }
         }
     }
 
-
+    Language output;
+    Language buffer;
+    output.load(argv[firstParameter]);
+    if (argc > firstParameter){
+    firstParameter++;
+        for (int i = firstParameter; i < argc - firstParameter; i++){
+        buffer.load(argv[i]);
+        output.join(buffer);
+        }
+    
+    }
+    output.sort();
+    output.save(outputFile);
 }
