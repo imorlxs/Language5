@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
                 s = argv[2];
                 if (s == "-o") {
                     parameters = 4;
-                    outputFile = argv[3]
+                    outputFile = argv[3];
                 }
             }
             if (s == "-b") {
