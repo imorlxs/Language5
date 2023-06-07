@@ -135,9 +135,17 @@ void Language::save(const char fileName[], char mode) const {
     ofstream fout;
     fout.open(fileName);
     if (fout) {
-        fout << MAGIC_STRING_T << endl;
         if (mode == 't'){
+            fout << MAGIC_STRING_T << endl;
             fout << *this;
+        }
+        if (mode == 'b'){
+            fout << MAGIC_STRING_B << endl;
+            fout << _languageId << endl;
+            fout << _size << endl;
+            for (int i = 0; i < _size; i++){
+                _vectorBigramFreq[i].serialize(fout);
+            }
         }
 
         if (!fout) {
@@ -152,22 +160,30 @@ void Language::save(const char fileName[], char mode) const {
 void Language::load(const char fileName[]) {
     ifstream fin;
     string magic_string;
-    int frequency;
-    string text;
     fin.open(fileName);
     if (fin) {
         fin >> magic_string;
 
-        if (magic_string != MAGIC_STRING_T) {
-            throw std::invalid_argument(string("The magic word isn't correct\n"));
-        }
-
-        fin >> *this;
-
-
-        if (!fin) {
+        if (magic_string == MAGIC_STRING_T) {
+           fin >> *this;
+           if (!fin) {
             throw std::ios_base::failure(string("error_de_lectura_del_fichero\n"));
         }
+            
+        }else if (magic_string == MAGIC_STRING_B){
+            fin >> _languageId;
+            fin >> _size;
+            fin.get();
+            delete[] _vectorBigramFreq;
+            _vectorBigramFreq = allocate(_size);
+            for(int i = 0; i < _size; i++){
+                _vectorBigramFreq[i].deserialize(fin);
+            }
+        }else{
+            throw std::invalid_argument(string("The magic word isn't correct load\n"));
+        }
+
+        
         fin.close();
 
     } else {

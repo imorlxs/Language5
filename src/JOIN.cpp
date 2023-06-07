@@ -47,7 +47,7 @@ void showEnglishHelp(ostream& outputStream)
 int main(int argc, char* argv[])
 {
     int firstParameter = 1;
-    bool isTextMode = true;
+    char mode = 't';
     char const* outputFile = "output.bgr";
 
     // Filtro de parametros
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
                         exit(1);
                     }
                 }
-                isTextMode = false;
+                mode = 'b';
             }
             if (s == "-o") {
                 firstParameter = 3;
@@ -103,5 +103,5 @@ int main(int argc, char* argv[])
         }
     }
     output.sort();
-    output.save(outputFile);
+    output.save(outputFile, mode);
 }

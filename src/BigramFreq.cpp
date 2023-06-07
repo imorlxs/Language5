@@ -12,7 +12,7 @@
 #include <string>
 
 #include "BigramFreq.h"
-
+#include <cstring>
 using namespace std;
 
 BigramFreq::BigramFreq() : _bigram("__"), _frequency(0) {
@@ -42,14 +42,17 @@ std::string BigramFreq::toString() const {
     return _bigram.toString() + " " + to_string(_frequency);
 }
 
-/*void serialize(std::ostream& outputStream){
+void BigramFreq::serialize(std::ostream& outputStream){
+    this->_bigram.serialize(outputStream);
+    outputStream.write((char*)&_frequency, sizeof(int));
+}
+
+void BigramFreq::deserialize(std::istream& inputStream){
+    this->_bigram.deserialize(inputStream);
+    inputStream.read((char*)&_frequency, sizeof(int));
     
 }
 
-void deserialize(std::istream& inputSstream){
-    
-}
- */
 std::ostream &operator<<(std::ostream& os, const BigramFreq& bigramFreq) {
     os << bigramFreq.toString();
     return os;
