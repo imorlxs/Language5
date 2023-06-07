@@ -1,0 +1,49 @@
+"make" -f nbproject/Makefile-LEARN.mk QMAKE= SUBPROJECTS= .build-conf
+make[1]: se entra en el directorio '/home/isaac/NetBeansProjects/Language5'
+"make"  -f nbproject/Makefile-LEARN.mk dist/LEARN/GNU-Linux/LEARN
+make[2]: se entra en el directorio '/home/isaac/NetBeansProjects/Language5'
+mkdir -p build/LEARN/GNU-Linux/src
+rm -f "build/LEARN/GNU-Linux/src/Bigram.o.d"
+g++ -D LEARN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/LEARN/GNU-Linux/src/Bigram.o.d" -o build/LEARN/GNU-Linux/src/Bigram.o src/Bigram.cpp
+mkdir -p build/LEARN/GNU-Linux/src
+rm -f "build/LEARN/GNU-Linux/src/BigramCounter.o.d"
+g++ -D LEARN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/LEARN/GNU-Linux/src/BigramCounter.o.d" -o build/LEARN/GNU-Linux/src/BigramCounter.o src/BigramCounter.cpp
+mkdir -p build/LEARN/GNU-Linux/src
+rm -f "build/LEARN/GNU-Linux/src/BigramFreq.o.d"
+g++ -D LEARN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/LEARN/GNU-Linux/src/BigramFreq.o.d" -o build/LEARN/GNU-Linux/src/BigramFreq.o src/BigramFreq.cpp
+mkdir -p build/LEARN/GNU-Linux/src
+rm -f "build/LEARN/GNU-Linux/src/Language.o.d"
+g++ -D LEARN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/LEARN/GNU-Linux/src/Language.o.d" -o build/LEARN/GNU-Linux/src/Language.o src/Language.cpp
+mkdir -p build/LEARN/GNU-Linux/src
+rm -f "build/LEARN/GNU-Linux/src/metamain.o.d"
+g++ -D LEARN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/LEARN/GNU-Linux/src/metamain.o.d" -o build/LEARN/GNU-Linux/src/metamain.o src/metamain.cpp
+In file included from src/metamain.cpp:2:
+src/LEARN.cpp:21:26: warning: extra tokens at end of #include directive
+   21 | #include"BigramCounter.h";
+      |                          ^
+In file included from src/metamain.cpp:2:
+src/LEARN.cpp: In function ‘int main(int, char**)’:
+src/LEARN.cpp:67:22: error: incompatible types in assignment of ‘char*’ to ‘char [11]’
+   67 |             FileName = argv[2];
+      |             ~~~~~~~~~^~~~~~~~~
+src/LEARN.cpp:83:26: error: incompatible types in assignment of ‘char*’ to ‘char [11]’
+   83 |                 FileName = argv[3];
+      |                 ~~~~~~~~~^~~~~~~~~
+src/LEARN.cpp:98:26: error: incompatible types in assignment of ‘char*’ to ‘char [11]’
+   98 |                 FileName = argv[4];
+      |                 ~~~~~~~~~^~~~~~~~~
+src/LEARN.cpp:116:35: error: cannot convert ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘char*’
+  116 |     texts[0].calculateFrequencies(s);
+      |                                   ^
+      |                                   |
+      |                                   std::string {aka std::__cxx11::basic_string<char>}
+In file included from src/LEARN.cpp:21,
+                 from src/metamain.cpp:2:
+include/BigramCounter.h:127:37: note:   initializing argument 1 of ‘void BigramCounter::calculateFrequencies(char*)’
+  127 |     void calculateFrequencies(char* fileName);
+      |                               ~~~~~~^~~~~~~~
+make[2]: *** [nbproject/Makefile-LEARN.mk:92: build/LEARN/GNU-Linux/src/metamain.o] Error 1
+make[2]: se sale del directorio '/home/isaac/NetBeansProjects/Language5'
+make[1]: *** [nbproject/Makefile-LEARN.mk:63: .build-conf] Error 2
+make[1]: se sale del directorio '/home/isaac/NetBeansProjects/Language5'
+make: *** [nbproject/Makefile-impl.mk:40: .build-impl] Error 2

@@ -90,6 +90,11 @@ public:
      * Converts lowercase letters in this bigram to uppercase. Modifier method
      */
     void toUpper();
+    
+    /**
+     * Converts uppercase letters in this bigram to lowercase. Modifier method
+     */
+    void toLower();
 
     /**
      * Serializes this object to the given output stream. Only the two
