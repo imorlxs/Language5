@@ -48,158 +48,43 @@ int main(int argc, char *argv[]) {
         showEnglishHelp(cout);
         exit(1);
     }
-    bool binary = false;
-    bool args = true;
-    int param = 1;
-    std::string s = argv[1];
+    char mode;
+    int param;
+    std::string s;
     std::string id = "unknown";
-    char FileName[] = "output.bgr";
-    if (s[0] == '-'){
-        if ( s == "-t"){
-            binary = false;
-            param++;
-            s = argv[param];
-            if (s == "-l"){
-                id = argv[3];
-                param = 4;
-                s = argv[param];
-                if ( s == "-o"){
-                    FileName = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
+    char const* FileName = "output.bgr";
+    for (int i = 1; i < argc; i++) {
+        s = argv[i];
+        if (s[0] == '-') {
+            if (s == "-t") {
+                mode = 't';
+            } else if (s == "-b") {
+                mode = 'b';
+            } else if (s == "-o") {
+                FileName = argv[i + 1];
+                i++;
+            } else if (s == "-l") {
+                id = argv[i+1];
+                i++;
+            }else {
+                showEnglishHelp(cout);
+                exit(1);
             }
-            else if ( s == "-o"){
-                FileName = argv[3];
-                param = 4;
-                s = argv[param];
-                if ( s == "-l"){
-                    id = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
+        } else {
+            param = i;
+            break;
         }
-        else if (s == "-b"){
-            binary = true;
-            param++;
-            s = argv[param];
-            if (s == "-l"){
-                id = argv[3];
-                param = 4;
-                s = argv[param];
-                if ( s == "-o"){
-                    FileName = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-            else if ( s == "-o"){
-                FileName = argv[3];
-                param = 4;
-                s = argv[param];
-                if ( s == "-l"){
-                    id = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-        }
-        else if ( s == "-l"){
-            id = argv[2];
-            param = 3;
-            s = argv[param];
-            if ( s == "-t"){
-                binary = false;
-                param++;
-                s = argv[param];
-                if ( s == "-o"){
-                    FileName = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-            else if ( s == "-b"){
-                binary = true;
-                param++;
-                s = argv[param];
-                if ( s == "-o"){
-                    FileName = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-            else if ( s == "-o"){
-                FileName = argv[4];
-                param = 5;
-                s = argv[param];
-                if ( s == "-t"){
-                    binary = false;
-                    param++;
-                    s = argv[param];
-                }
-                else if ( s == "-b"){
-                    binary = true;
-                    param++;
-                    s = argv[param];
-                }
-            }
-        }
-        else if ( s == "-o"){
-            FileName = argv[2];
-            param = 3;
-            s = argv[param];
-            if ( s == "-t"){
-                binary = false;
-                param++;
-                s = argv[param];
-                if ( s == "-l"){
-                    id = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-            else if ( s == "-b"){
-                binary = true;
-                param++;
-                s = argv[param];
-                if ( s == "-l"){
-                    id = argv[5];
-                    param = 6;
-                    s = argv[param];
-                }
-            }
-            else if ( s == "-l"){
-                id = argv[4];
-                param = 5;
-                s = argv[param];
-                if ( s == "-t"){
-                    binary = false;
-                    param++;
-                    s = argv[param];
-                }
-                else if ( s == "-b"){
-                    binary = true;
-                    param++;
-                    s = argv[param];
-                }
-            }
-        }
-        else{
-            showEnglishHelp(cout);
-        }
+
     }
     
-    BigramCounter* texts;
-    texts = new BigramCounter[argc - param];
     int conter = 0;
+    BigramCounter texts;
     for (int i = param; i < argc; i++){
-        texts[conter].calculateFrequencies(s);
-        texts[conter].toLanguage();
-        texts[conter].toLanguage().setLanguageId(id);
-        texts[conter].toLanguage().load(FileName);
-        conter++;
-        
+        texts.calculateFrequencies(argv[i]);
+        texts.toLanguage();
+        texts.toLanguage().setLanguageId(id);
+        texts.toLanguage().save(FileName,mode);    
     }
+    texts.toLanguage().sort();
 }
 
