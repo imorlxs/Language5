@@ -120,12 +120,12 @@ void Language::sort() {
     int max_idx;
     for (int i = 0; i < _size; i++) {
         max_idx = i;
-        for (int j = i+1; j < _size; j++) {
+        for (int j = i + 1; j < _size; j++) {
             if (_vectorBigramFreq[j] > _vectorBigramFreq[max_idx]) {
                 max_idx = j;
             }
         }
-        if (max_idx != i){
+        if (max_idx != i) {
             this->swap(i, max_idx);
         }
     }
@@ -135,15 +135,15 @@ void Language::save(const char fileName[], char mode) const {
     ofstream fout;
     fout.open(fileName);
     if (fout) {
-        if (mode == 't'){
+        if (mode == 't') {
             fout << MAGIC_STRING_T << endl;
             fout << *this;
         }
-        if (mode == 'b'){
+        if (mode == 'b') {
             fout << MAGIC_STRING_B << endl;
             fout << _languageId << endl;
             fout << _size << endl;
-            for (int i = 0; i < _size; i++){
+            for (int i = 0; i < _size; i++) {
                 _vectorBigramFreq[i].serialize(fout);
             }
         }
@@ -165,32 +165,31 @@ void Language::load(const char fileName[]) {
         fin >> magic_string;
 
         if (magic_string == MAGIC_STRING_T) {
-           fin >> *this;
-           if (!fin) {
-            throw std::ios_base::failure(string("error_de_lectura_del_fichero\n"));
-        }
-            
-        }else if (magic_string == MAGIC_STRING_B){
+            fin >> *this;
+            if (!fin) {
+                throw std::ios_base::failure(string("error_de_lectura_del_fichero\n"));
+            }
+
+        } else if (magic_string == MAGIC_STRING_B) {
             fin >> _languageId;
             fin >> _size;
             fin.get();
             delete[] _vectorBigramFreq;
             _vectorBigramFreq = allocate(_size);
-            for(int i = 0; i < _size; i++){
+            for (int i = 0; i < _size; i++) {
                 _vectorBigramFreq[i].deserialize(fin);
             }
-        }else{
+        } else {
             throw std::invalid_argument(string("The magic word isn't correct load\n"));
         }
 
-        
+
         fin.close();
 
     } else {
         throw std::ios_base::failure(string("error_de_apertura_del_fichero\n"));
     }
 }
-
 
 void Language::append(const BigramFreq &bigramFreq) {
     Bigram bigram = bigramFreq.getBigram();
@@ -214,7 +213,7 @@ void Language::swap(int first, int second) {
 }
 
 BigramFreq& Language::operator[](int index) const {
-    return _vectorBigramFreq[index]; 
+    return _vectorBigramFreq[index];
 }
 
 BigramFreq& Language::operator[](int index) {
@@ -255,6 +254,7 @@ void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     delete[] vector1;
     vector1 = vector2;
 }
+
 std::ostream &operator<<(std::ostream& os, const Language& language) {
     os << language.getLanguageId() << endl;
     os << language.toString();
@@ -270,7 +270,7 @@ std::istream &operator>>(std::istream& is, Language& language) {
     l.setLanguageId(id);
     BigramFreq bigramfreq;
     for (int i = 0; i < num_bigrams; i++) {
-        
+
         is >> bigramfreq;
         l[i] = bigramfreq;
     }

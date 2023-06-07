@@ -42,15 +42,15 @@ std::string BigramFreq::toString() const {
     return _bigram.toString() + " " + to_string(_frequency);
 }
 
-void BigramFreq::serialize(std::ostream& outputStream){
+void BigramFreq::serialize(std::ostream& outputStream) {
     this->_bigram.serialize(outputStream);
-    outputStream.write((char*)&_frequency, sizeof(int));
+    outputStream.write((char*) &_frequency, sizeof (int));
 }
 
-void BigramFreq::deserialize(std::istream& inputStream){
+void BigramFreq::deserialize(std::istream& inputStream) {
     this->_bigram.deserialize(inputStream);
-    inputStream.read((char*)&_frequency, sizeof(int));
-    
+    inputStream.read((char*) &_frequency, sizeof (int));
+
 }
 
 std::ostream &operator<<(std::ostream& os, const BigramFreq& bigramFreq) {
@@ -62,7 +62,7 @@ std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq) {
     Bigram bigram;
     int freq;
     is >> bigram >> freq;
-    
+
     bigramFreq.setBigram(bigram);
     bigramFreq.setFrequency(freq);
     return is;

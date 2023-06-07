@@ -87,7 +87,7 @@ public:
      * Converts lowercase letters in this bigram to uppercase. Modifier method
      */
     void toUpper();
-    
+
     /**
      * Converts uppercase letters in this bigram to lowercase. Modifier method
      */
@@ -113,14 +113,14 @@ public:
      * @param index the position to consider
      * @return A  reference to the character at the given position
      */
-    char& operator[] (size_t pos);
+    char& operator[](size_t pos);
 
     /**
      * @brief Gets a const reference to the character at the given position
      * @param index the position to consider
      * @return A const reference to the character at the given position
      */
-    const char& operator[] (size_t pos) const;
+    const char& operator[](size_t pos) const;
 
 private:
 

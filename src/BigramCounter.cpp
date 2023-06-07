@@ -23,8 +23,7 @@ using namespace std;
 
 const char* const BigramCounter::DEFAULT_VALID_CHARACTERS = "abcdefghijklmnopqrstuvwxyz\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF";
 
-BigramCounter::BigramCounter(const std::string& validChars)
-{
+BigramCounter::BigramCounter(const std::string& validChars) {
     _validCharacters = validChars;
     int size = _validCharacters.size();
     allocate(size);
@@ -35,23 +34,19 @@ BigramCounter::BigramCounter(const std::string& validChars)
     }
 }
 
-BigramCounter::BigramCounter(const BigramCounter& orig)
-{
+BigramCounter::BigramCounter(const BigramCounter& orig) {
     this->copyFrom(orig);
 }
 
-BigramCounter::~BigramCounter()
-{
+BigramCounter::~BigramCounter() {
     deallocate();
 }
 
-int BigramCounter::getSize() const
-{
+int BigramCounter::getSize() const {
     return _validCharacters.size();
 }
 
-int BigramCounter::getNumberActiveBigrams() const
-{
+int BigramCounter::getNumberActiveBigrams() const {
     int size = this->getSize();
     int activeBigrams = 0;
     for (int i = 0; i < size; i++) {
@@ -64,8 +59,7 @@ int BigramCounter::getNumberActiveBigrams() const
     return activeBigrams;
 }
 
-bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
-{
+bool BigramCounter::setFrequency(const Bigram& bigram, int frequency) {
     bool founded = false;
     if (_validCharacters.find(bigram[0]) < 0 || _validCharacters.find(bigram[1]) < 0) {
         founded = false;
@@ -76,8 +70,7 @@ bool BigramCounter::setFrequency(const Bigram& bigram, int frequency)
     return founded;
 }
 
-void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency)
-{
+void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency) {
     if (frequency == 0) {
         this->findBigram(bigram)++;
     } else {
@@ -85,8 +78,7 @@ void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency)
     }
 }
 
-BigramCounter& BigramCounter::operator=(const BigramCounter& orig)
-{
+BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
     if (this != &orig) {
         this->~BigramCounter();
         allocate(orig.getSize());
@@ -100,8 +92,7 @@ BigramCounter& BigramCounter::operator=(const BigramCounter& orig)
     return *this;
 }
 
-BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs)
-{
+BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs) {
     for (int i = 0; i < _validCharacters.size(); i++) {
         int row = rhs._validCharacters.find(_validCharacters[i]);
         if (row < 0) {
@@ -120,25 +111,24 @@ BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs)
     return *this;
 }
 
-void BigramCounter::calculateFrequencies(char* fileName)
-{
+void BigramCounter::calculateFrequencies(char* fileName) {
     ifstream fin;
     std::string text;
     fin.open(fileName);
     if (fin) {
         // Esto solo cogería la primera palabra, no? Utiliza while(fin >> text)
-        while(fin >> text){
-            for (int i = 0; i < text.length() - 1; i++){
-                Bigram bigram(text[i], text[i+1]);
+        while (fin >> text) {
+            for (int i = 0; i < text.length() - 1; i++) {
+                Bigram bigram(text[i], text[i + 1]);
                 bigram.toLower();
-                if(isValidCharacter(bigram[0], _validCharacters) && isValidCharacter(bigram[1], _validCharacters)){                 
+                if (isValidCharacter(bigram[0], _validCharacters) && isValidCharacter(bigram[1], _validCharacters)) {
                     this->increaseFrequency(bigram);
                 }
             }
         }
-//        if (!fin) {
-//            throw std::ios_base::failure(string("error de lectura del fichero\n"));
-//        }
+        //        if (!fin) {
+        //            throw std::ios_base::failure(string("error de lectura del fichero\n"));
+        //        }
         fin.close();
     } else {
         throw std::ios_base::failure(string("error de apertura del fichero\n"));
@@ -146,8 +136,7 @@ void BigramCounter::calculateFrequencies(char* fileName)
 
 }
 
-Language BigramCounter::toLanguage() const
-{
+Language BigramCounter::toLanguage() const {
     Language language(this->getNumberActiveBigrams());
     int size = this->getSize();
     int counter = 0;
@@ -164,34 +153,29 @@ Language BigramCounter::toLanguage() const
     return language;
 }
 
-const int& BigramCounter::operator()(int row, int column) const
-{
+const int& BigramCounter::operator()(int row, int column) const {
     return _frequency[row][column];
 }
 
-int& BigramCounter::operator()(int row, int column)
-{
+int& BigramCounter::operator()(int row, int column) {
     return _frequency[row][column];
 }
 
-void BigramCounter::allocate(int size)
-{
+void BigramCounter::allocate(int size) {
     _frequency = new int*[size];
     for (int i = 0; i < size; i++) {
         _frequency[i] = new int[size];
     }
 }
 
-void BigramCounter::deallocate()
-{
+void BigramCounter::deallocate() {
     for (int i = 0; i < this->getSize(); i++) {
         delete[] _frequency[i];
     }
     delete[] _frequency;
 }
 
-int& BigramCounter::findBigram(Bigram bigram)
-{
+int& BigramCounter::findBigram(Bigram bigram) {
     int row = _validCharacters.find(bigram[0]);
     int col = _validCharacters.find(bigram[1]);
 
@@ -202,8 +186,7 @@ int& BigramCounter::findBigram(Bigram bigram)
     }
 }
 
-void BigramCounter::copyFrom(const BigramCounter& orig)
-{
+void BigramCounter::copyFrom(const BigramCounter& orig) {
     allocate(orig.getSize());
     _validCharacters = orig._validCharacters;
     for (int i = 0; i < orig.getSize(); i++) {

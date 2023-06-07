@@ -1,8 +1,8 @@
 #ifdef LEARN
-    #include "LEARN.cpp"
+#include "LEARN.cpp"
 #elif CLASSIFY
-    #include "CLASSIFY.cpp"
+#include "CLASSIFY.cpp"
 #elif JOIN
-    #include "JOIN.cpp"
+#include "JOIN.cpp"
 #endif
 
