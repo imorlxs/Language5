@@ -1,12 +1,12 @@
 /*
- * MetodologÃ­a de la ProgramaciÃ³n: Language5
+ * Metodología de la Programación: Language5
  * Curso 2022/2023
  */
 
 /** 
  * @file CLASSIFY.cpp
  * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author AndrÃ©s Cano Utrera <acu@decsai.ugr.es>
+ * @author Andrés Cano Utrera <acu@decsai.ugr.es>
  * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
  * 
  * Created on 29 January 2023, 11:00
@@ -44,7 +44,30 @@ int main(int argc, char *argv[]) {
         showEnglishHelp(cout);
         exit(EXIT_FAILURE);
     }
-
+    
+    double min_distance;
+    string min_id;
+    BigramCounter text;
+    text.calculateFrequencies(argv[1]);
+    Language lang_input = text.toLanguage();
+    lang_input.sort();
+    
+    
+    Language lang_model;
+    lang_model.load(argv[2]);   
+    min_distance = lang_input.getDistance(lang_model);
+    min_id = lang_model.getLanguageId();
+    
+    for (int i = 3; i < argc; i++){
+        lang_model.load(argv[i]);
+        double distance = lang_input.getDistance(lang_model);
+        if (distance < min_distance){
+            min_distance = distance;
+            min_id = lang_model.getLanguageId();
+        }
+    }
+    
+    cout << "Final decision: language " << min_id << " with a distance of " << min_distance << endl;
     return EXIT_SUCCESS;
     
 }
