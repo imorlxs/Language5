@@ -152,17 +152,26 @@ void Language::save(const char fileName[], char mode) const {
 void Language::load(const char fileName[]) {
     ifstream fin;
     string magic_string;
-    int frequency;
-    string text;
     fin.open(fileName);
     if (fin) {
         fin >> magic_string;
 
-        if (magic_string != MAGIC_STRING_T) {
+        if (magic_string == MAGIC_STRING_T) {
+           fin >> *this;
+            
+        }if (magic_string == MAGIC_STRING_B){
+            fin >> _languageId;
+            fin >> _size;
+            delete[] _vectorBigramFreq;
+            _vectorBigramFreq = allocate(_size);
+            for(int i = 0; i < _size; i++){
+                _vectorBigramFreq[i].deserialize(fin);
+            }
+        }else{
             throw std::invalid_argument(string("The magic word isn't correct\n"));
         }
 
-        fin >> *this;
+        
 
 
         if (!fin) {
