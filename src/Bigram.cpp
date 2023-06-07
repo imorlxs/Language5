@@ -34,7 +34,7 @@ Bigram::Bigram(const char* text) {
     if (strlen(text) == 2) {
         strcpy(_text, text);
     } else {
-        strcpy(_text, "__"); 
+        strcpy(_text, "__");
     }
 }
 
@@ -74,13 +74,13 @@ void Bigram::toLower() {
     at(1) = tolower(at(1));
 }
 
-void Bigram::serialize(std::ostream& outputStream){
-    outputStream.write(_text,2);
+void Bigram::serialize(std::ostream& outputStream) {
+    outputStream.write(_text, 2);
 }
 
-void Bigram::deserialize(std::istream& inputStream){
+void Bigram::deserialize(std::istream& inputStream) {
     inputStream.get(_text, 3);
-    
+
 }
 
 char& Bigram::operator[](size_t pos) {
@@ -92,7 +92,7 @@ const char& Bigram::operator[](size_t pos) const {
 }
 
 bool isValidCharacter(char character, const string& validCharacters) {
-    if(validCharacters.find(character) >= 0 && validCharacters.find(character) < validCharacters.size())
+    if (validCharacters.find(character) >= 0 && validCharacters.find(character) < validCharacters.size())
         return true;
     else
         return false;

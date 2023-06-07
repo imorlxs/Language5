@@ -170,8 +170,8 @@ private:
 
     std::string getValidCharacters() const;
 
-    void copyFrom(const BigramCounter& orig) ;
+    void copyFrom(const BigramCounter& orig);
 
-    };
+};
 
 #endif /* BIGRAM_COUNTER_H */

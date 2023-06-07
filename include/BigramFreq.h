@@ -28,8 +28,8 @@ public:
      * the text of the bigram and 0 as the frequency
      */
     BigramFreq();
-    
- 
+
+
     /**
      * @brief Gets a const reference to the Bigram of this BigramFreq object
      * @return A const reference to the Bigram of this BigramFreq object
@@ -54,7 +54,7 @@ public:
      * @param frequency the new frequency value for this BigramFreq object
      */
     void setFrequency(int frequency);
-    
+
     /**
      * @brief Obtains a string with the string and frequency of the bigram
      * in this object (separated by a whitespace).
@@ -62,7 +62,7 @@ public:
      * in this object
      */
     std::string toString() const;
-    
+
     /**
      * Serializes this object to the given output stream. It first serializes
      * the bigram of this object and them the bytes of the
@@ -71,7 +71,7 @@ public:
      * @param outputStream A output stream where this object will be serialized
      */
     void serialize(std::ostream& outputStream);
-    
+
     /**
      * Deserializes this object from the given input stream. It first deserializes
      * the Bigram of this object and them then the bytes of the

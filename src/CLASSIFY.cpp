@@ -13,6 +13,7 @@
 #include "Language.h"
 #include "BigramCounter.h"
 using namespace std;
+
 /**
  * Shows help about the use of this program in the given output stream
  * @param outputStream The output stream where the help will be shown (for example,
@@ -37,34 +38,34 @@ void showEnglishHelp(ostream& outputStream) {
  * @return 0 If there is no error; a value > 0 if error
  */
 int main(int argc, char *argv[]) {
-    if (argc < 3){
+    if (argc < 3) {
         showEnglishHelp(cout);
         exit(EXIT_FAILURE);
     }
-    
+
     double min_distance;
     string min_id;
     BigramCounter text;
     text.calculateFrequencies(argv[1]);
     Language lang_input = text.toLanguage();
     lang_input.sort();
-    
-    
+
+
     Language lang_model;
-    lang_model.load(argv[2]);   
+    lang_model.load(argv[2]);
     min_distance = lang_input.getDistance(lang_model);
     min_id = lang_model.getLanguageId();
-    
-    for (int i = 3; i < argc; i++){
+
+    for (int i = 3; i < argc; i++) {
         lang_model.load(argv[i]);
         double distance = lang_input.getDistance(lang_model);
-        if (distance < min_distance){
+        if (distance < min_distance) {
             min_distance = distance;
             min_id = lang_model.getLanguageId();
         }
     }
-    
+
     cout << "Final decision: language " << min_id << " with a distance of " << min_distance << endl;
     return EXIT_SUCCESS;
-    
+
 }
