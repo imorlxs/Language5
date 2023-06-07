@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
     }
     if (args){
         s = argv[2];
-        if (s[0] == "-"){
+        if (s[0] == '-'){
             if ( s == "-l"){
                 id = argv[3];
             }
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
     
     if (args){
         s = argv[3];
-        if (s[0] == "-"){
+        if (s[0] == '-'){
             if ( s == "-o"){
                 FileName = argv[4];
             }
