@@ -20,7 +20,7 @@ using namespace std;
  */
 void showEnglishHelp(ostream& outputStream)
 {
-    outputStream << "Error, run with the following Parameters:" << endl;
+    outputStream << "Error, run with the following parameters:" << endl;
     outputStream << "JOIN [-t|-b] [-o <outputFile.bgr>] <file1.bgr> [<file2.bgr> ... <filen.bgr>] " << endl;
     outputStream << "       join the Language files <file1.bgr> <file2.bgr> ... into <outputFile.bgr>" << endl;
     outputStream << endl;
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 {
     int firstParameter = 1;
     bool isTextMode = true;
-    char const* outputFile = "outputFile.bgr";
+    char const* outputFile = "output.bgr";
 
     // Filtro de parametros
     if (argc < 2) {
@@ -95,11 +95,11 @@ int main(int argc, char* argv[])
     Language output;
     Language buffer;
     output.load(argv[firstParameter]);
-    if (argc > firstParameter) {
+    if (argc > firstParameter+1) {
         firstParameter++;
-        for (int i = firstParameter; i < argc - firstParameter; i++) {
+        for (int i = firstParameter; i < argc; i++) {
             buffer.load(argv[i]);
-            output.join(buffer);
+            output += buffer;
         }
     }
     output.sort();
