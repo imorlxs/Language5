@@ -19,7 +19,7 @@
  */
 
 #include"BigramCounter.h";
-
+using namespace std;
 void showEnglishHelp(ostream& outputStream) {
     outputStream << "Error, run with the following parameters:" << endl;
     outputStream << "LEARN [-t|-b] [-l languageId] [-o outputFilename] <text1.txt> [<text2.txt> <text3.txt> .... ]" << endl;
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     std::string s = argv[1];
     std::string id = "unknown";
     char FileName[] = "output.bgr";
-    if (s[0] == "-"){
+    if (s[0] == '-'){
         if ( s == "-t"){
             binary = false;
         }
