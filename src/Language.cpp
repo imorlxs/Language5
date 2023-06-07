@@ -117,19 +117,16 @@ std::string Language::toString() const {
 }
 
 void Language::sort() {
+    int max_idx;
     for (int i = 0; i < _size; i++) {
-        for (int j = _size - 1; j > i; j--) {
-            if (_vectorBigramFreq[j] > _vectorBigramFreq[j - 1]) {
-                this->swap(j, j - 1);
-            } else if (_vectorBigramFreq[j] == _vectorBigramFreq[j - 1]) {
-                if (_vectorBigramFreq[j].getBigram()[0] < _vectorBigramFreq[j - 1].getBigram()[0]) {
-                    this->swap(j, j - 1);
-                } else if (_vectorBigramFreq[j].getBigram()[0] == _vectorBigramFreq[j - 1].getBigram()[0]) {
-                    if (_vectorBigramFreq[j].getBigram()[1] < _vectorBigramFreq[j - 1].getBigram()[1]) {
-                        this->swap(j, j - 1);
-                    }
-                }
+        max_idx = i;
+        for (int j = i+1; j < _size; j++) {
+            if (_vectorBigramFreq[j] > _vectorBigramFreq[max_idx]) {
+                max_idx = j;
             }
+        }
+        if (max_idx != i){
+            this->swap(i, max_idx);
         }
     }
 }
@@ -178,6 +175,7 @@ void Language::load(const char fileName[]) {
     }
 }
 
+
 void Language::append(const BigramFreq &bigramFreq) {
     Bigram bigram = bigramFreq.getBigram();
     int index = this->findBigram(bigram);
@@ -189,12 +187,6 @@ void Language::append(const BigramFreq &bigramFreq) {
         _vectorBigramFreq[_size - 1].setBigram(bigram);
         _vectorBigramFreq[_size - 1].setFrequency(freq);
 
-    }
-}
-
-void Language::join(const Language &language) {
-    for (int i = 0; i < language.getSize(); i++) {
-        this->append(language.at(i));
     }
 }
 
@@ -214,7 +206,9 @@ BigramFreq& Language::operator[](int index) {
 }
 
 Language& Language::operator+=(const Language& language) {
-    this->join(language);
+    for (int i = 0; i < language.getSize(); i++) {
+        this->append(language.at(i));
+    }
     return *this;
 }
 
@@ -238,8 +232,8 @@ void Language::copyFrom(const Language &orig) {
 
 void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
     nElements += increment;
-    BigramFreq* vector2 = new BigramFreq[increment];
-    for (int i = 0; i < nElements; i++) {
+    BigramFreq* vector2 = new BigramFreq[nElements];
+    for (int i = 0; i < (nElements - increment); i++) {
         vector2[i] = vector1[i];
     }
     delete[] vector1;
@@ -258,10 +252,11 @@ std::istream &operator>>(std::istream& is, Language& language) {
     is >> num_bigrams;
     Language l(num_bigrams);
     l.setLanguageId(id);
+    BigramFreq bigramfreq;
     for (int i = 0; i < num_bigrams; i++) {
-        BigramFreq bigramfreq;
+        
         is >> bigramfreq;
-        l.at(i) = bigramfreq;
+        l[i] = bigramfreq;
     }
     language = l;
 
