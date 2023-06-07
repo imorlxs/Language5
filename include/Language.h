@@ -199,8 +199,6 @@ public:
      */
     void append(const BigramFreq& bigramFreq);
 
-    void join(const Language &language);
-
     void swap(int first, int second);
 
     /**
