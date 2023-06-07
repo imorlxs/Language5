@@ -95,11 +95,10 @@ std::ostream &operator<<(std::ostream& os, const Bigram& bigram) {
 }
 
 std::istream &operator>>(std::istream& is, Bigram& bigram) {
-    char c;
-    c = is.get();
-    bigram[0] = c;
-    c = is.get();
-    bigram[1] = c;
+    string s;
+    is >> s;
+    bigram[0] = s[0];
+    bigram[1] = s[1];
     bigram[2] = '\0';
     return is;
 }
