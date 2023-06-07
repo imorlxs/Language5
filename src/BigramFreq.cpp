@@ -59,7 +59,7 @@ std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq) {
     Bigram bigram;
     int freq;
     is >> bigram >> freq;
-
+    
     bigramFreq.setBigram(bigram);
     bigramFreq.setFrequency(freq);
     return is;
@@ -74,7 +74,7 @@ bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
     if (bigramFreq1.getFrequency() < bigramFreq2.getFrequency()) {
         minor = true;
     } else if (bigramFreq1.getFrequency() == bigramFreq2.getFrequency()) {
-        if (bigramFreq1.getBigram().getText() < bigramFreq2.getBigram().getText()) {
+        if (bigramFreq1.getBigram().getText() > bigramFreq2.getBigram().getText()) {
             minor = true;
         }
     }
