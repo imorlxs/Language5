@@ -83,7 +83,8 @@ int main(int argc, char *argv[]) {
         texts.calculateFrequencies(argv[i]);
         texts.toLanguage();
         texts.toLanguage().setLanguageId(id);
-        texts.toLanguage().save(FileName,mode);    
+        texts.toLanguage().save(FileName,mode);
+        
     }
     texts.toLanguage().sort();
 }
