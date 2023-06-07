@@ -1,12 +1,12 @@
 /*
- * MetodologÃ­a de la ProgramaciÃ³n: Language5
+ * Metodología de la Programación: Language5
  * Curso 2022/2023
  */
 
 /**
  * @file BigramCounter.cpp
  * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author AndrÃ©s Cano Utrera <acu@decsai.ugr.es>
+ * @author Andrés Cano Utrera <acu@decsai.ugr.es>
  * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
  *
  * Created on 12 February 2023, 11:00
@@ -129,30 +129,24 @@ void BigramCounter::calculateFrequencies(char* fileName)
     std::string text;
     fin.open(fileName);
     if (fin) {
-        // Esto solo cogerÃ­a la primera palabra, no? Utiliza while(fin >> text)
-        std::getline(fin, text);
-        if (!fin) {
-            throw std::ios_base::failure(string("error de lectura del fichero\n"));
+        // Esto solo cogería la primera palabra, no? Utiliza while(fin >> text)
+        while(fin >> text){
+            for (int i = 0; i < text.length() - 1; i++){
+                Bigram bigram(text[i], text[i+1]);
+                bigram.toLower();
+                if(isValidCharacter(bigram[0], _validCharacters) && isValidCharacter(bigram[1], _validCharacters)){                 
+                    this->increaseFrequency(bigram);
+                }
+            }
         }
+//        if (!fin) {
+//            throw std::ios_base::failure(string("error de lectura del fichero\n"));
+//        }
         fin.close();
     } else {
         throw std::ios_base::failure(string("error de apertura del fichero\n"));
     }
 
-    Bigram* bigrams;
-    bigrams = new Bigram[text.size()];
-    BigramFreq* bigramfreq;
-    bigramfreq = new BigramFreq[text.size()];
-    // Hay que hacerlo directamente sobre la matriz 2D
-    for (int i = 0; i < text.size(); i++) {
-        bigrams[i].at(0) = text[i];
-        bigrams[i].at(1) = text[i + 1];
-        if (this->findBigram(bigrams[i]) >= 1) {
-            findBigram(bigrams[i])++;
-        } else {
-            this->findBigram(bigrams[i]) = 1;
-        }
-    }
 }
 
 Language BigramCounter::toLanguage() const
