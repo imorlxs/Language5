@@ -135,9 +135,18 @@ void Language::save(const char fileName[], char mode) const {
     ofstream fout;
     fout.open(fileName);
     if (fout) {
-        fout << MAGIC_STRING_T << endl;
+        
         if (mode == 't'){
+            fout << MAGIC_STRING_T << endl;
             fout << *this;
+        }
+        if (mode == 'b'){
+            fout << MAGIC_STRING_B << endl;
+            fout << _languageId;
+            fout << _size;
+            for (int i = 0; i < _size; i++){
+                _vectorBigramFreq[i].serialize(fout);
+            }
         }
 
         if (!fout) {
