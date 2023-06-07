@@ -73,14 +73,15 @@ void Bigram::toLower() {
     at(0) = tolower(at(0));
     at(1) = tolower(at(1));
 }
-//
-//void serialize(std::ostream& outputStream){
-//    
-//}
-//
-//void deserialize(std::istream& inputStream){
-//    
-//}
+
+void Bigram::serialize(std::ostream& outputStream){
+    outputStream.write(_text,2);
+}
+
+void Bigram::deserialize(std::istream& inputStream){
+    inputStream.get(_text, 2);
+    
+}
 
 char& Bigram::operator[](size_t pos) {
     return _text[pos];
