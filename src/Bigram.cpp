@@ -79,7 +79,7 @@ void Bigram::serialize(std::ostream& outputStream){
 }
 
 void Bigram::deserialize(std::istream& inputStream){
-    inputStream.get(_text, 2);
+    inputStream.get(_text, 3);
     
 }
 
