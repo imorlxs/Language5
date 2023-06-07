@@ -199,6 +199,7 @@ int main(int argc, char *argv[]) {
         texts[conter].toLanguage().setLanguageId(id);
         texts[conter].toLanguage().load(FileName);
         conter++;
+        
     }
 }
 
