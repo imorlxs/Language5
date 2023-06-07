@@ -18,8 +18,7 @@ using namespace std;
  * @param outputStream The output stream where the help will be shown (for example,
  * cout, cerr, etc)
  */
-void showEnglishHelp(ostream& outputStream)
-{
+void showEnglishHelp(ostream& outputStream) {
     outputStream << "Error, run with the following parameters:" << endl;
     outputStream << "JOIN [-t|-b] [-o <outputFile.bgr>] <file1.bgr> [<file2.bgr> ... <filen.bgr>] " << endl;
     outputStream << "       join the Language files <file1.bgr> <file2.bgr> ... into <outputFile.bgr>" << endl;
@@ -44,8 +43,7 @@ void showEnglishHelp(ostream& outputStream)
  * @return 0 If there is no error; a value > 0 if error
  */
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     int firstParameter = 1;
     char mode = 't';
     char const* outputFile = "output.bgr";
@@ -54,48 +52,33 @@ int main(int argc, char* argv[])
     if (argc < 2) {
         showEnglishHelp(cout);
         exit(1);
-    } else {
-        string s = argv[1];
+    }
+    string s;
+    for (int i = 1; i < argc; i++) {
+        s = argv[i];
         if (s[0] == '-') {
             if (s == "-t") {
-                s = argv[2];
-                if (s[0] == '-') {
-                    if (s == "-o") {
-                        firstParameter = 4;
-                        outputFile = argv[3];
-                    } else {
-                        showEnglishHelp(cout);
-                        exit(1);
-                    }
-                }
-            }
-            if (s == "-b") {
-                s = argv[2];
-                if (s[0] == '-') {
-                    if (s == "-o") {
-                        firstParameter = 4;
-                        outputFile = argv[3];
-                    } else {
-                        showEnglishHelp(cout);
-                        exit(1);
-                    }
-                }
+                mode = 't';
+            } else if (s == "-b") {
                 mode = 'b';
-            }
-            if (s == "-o") {
-                firstParameter = 3;
-                outputFile = argv[2];
+            } else if (s == "-o") {
+                outputFile = argv[i + 1];
+                i++;
             } else {
                 showEnglishHelp(cout);
                 exit(1);
             }
+        } else {
+            firstParameter = i;
+            break;
         }
+
     }
 
     Language output;
     Language buffer;
     output.load(argv[firstParameter]);
-    if (argc > firstParameter+1) {
+    if (argc > firstParameter + 1) {
         firstParameter++;
         for (int i = firstParameter; i < argc; i++) {
             buffer.load(argv[i]);
