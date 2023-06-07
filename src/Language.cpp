@@ -135,7 +135,6 @@ void Language::save(const char fileName[], char mode) const {
     ofstream fout;
     fout.open(fileName);
     if (fout) {
-        
         if (mode == 't'){
             fout << MAGIC_STRING_T << endl;
             fout << *this;
