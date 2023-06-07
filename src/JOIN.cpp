@@ -5,7 +5,7 @@
 
 /**
  * @file JOIN.cpp
- * @author Francisco Javier Cáceres Martín <javicaceres@correo.ugr.es>
+ * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
  * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 

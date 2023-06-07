@@ -5,8 +5,8 @@
 
 /** 
  * @file Language.cpp
- * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 #include "Language.h"
 #include <fstream>

@@ -5,11 +5,8 @@
 
 /* 
  * @file   BigramFreq.h
- * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author Andrés Cano Utrera <acu@decsai.ugr.es>
- * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
- *
- * Created on 12 February 2023, 10:40
+ * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
 #ifndef BIGRAM_FREQ_H
@@ -73,7 +70,7 @@ public:
      * method ostream::write(const char* s, streamsize n))
      * @param outputStream A output stream where this object will be serialized
      */
-   // void serialize(std::ostream& outputStream);
+    void serialize(std::ostream& outputStream);
     
     /**
      * Deserializes this object from the given input stream. It first deserializes
@@ -82,7 +79,7 @@ public:
      * method istream::read(char* s, streamsize n))
      * @param inputSstream A input stream from which this object will be deserialized
      */
-    //void deserialize(std::istream& inputSstream);
+    void deserialize(std::istream& inputSstream);
 
 private:
     Bigram _bigram; ///< the Bigram object

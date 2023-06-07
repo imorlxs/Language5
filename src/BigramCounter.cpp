@@ -5,11 +5,8 @@
 
 /**
  * @file BigramCounter.cpp
- * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author Andrés Cano Utrera <acu@decsai.ugr.es>
- * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
- *
- * Created on 12 February 2023, 11:00
+ * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
 #include "BigramCounter.h"

@@ -1,12 +1,12 @@
 /*
- * Metodología de la Programación: Language4
+ * Metodología de la Programaci�n: Language5
  * Curso 2022/2023
  */
 
 /** 
  * @file BigramFreq.cpp
- * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
 #include <string>
