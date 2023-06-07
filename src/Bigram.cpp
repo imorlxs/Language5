@@ -1,5 +1,5 @@
 /*
- * MetodologÃ­a de la ProgramaciÃ³n: Language4
+ * Metodología de la Programación: Language4
  * Curso 2022/2023
  */
 
@@ -68,6 +68,11 @@ void Bigram::toUpper() {
     at(0) = toupper(at(0));
     at(1) = toupper(at(1));
 }
+
+void Bigram::toLower() {
+    at(0) = tolower(at(0));
+    at(1) = tolower(at(1));
+}
 //
 //void serialize(std::ostream& outputStream){
 //    
@@ -86,7 +91,10 @@ const char& Bigram::operator[](size_t pos) const {
 }
 
 bool isValidCharacter(char character, const string& validCharacters) {
-    return validCharacters.find(character) != string::npos;
+    if(validCharacters.find(character) >= 0 && validCharacters.find(character) < validCharacters.size())
+        return true;
+    else
+        return false;
 }
 
 std::ostream &operator<<(std::ostream& os, const Bigram& bigram) {
