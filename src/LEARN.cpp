@@ -19,7 +19,9 @@
  */
 
 #include"BigramCounter.h";
+
 using namespace std;
+
 void showEnglishHelp(ostream& outputStream) {
     outputStream << "Error, run with the following parameters:" << endl;
     outputStream << "LEARN [-t|-b] [-l languageId] [-o outputFilename] <text1.txt> [<text2.txt> <text3.txt> .... ]" << endl;
@@ -79,13 +81,16 @@ int main(int argc, char *argv[]) {
     
     int conter = 0;
     BigramCounter texts;
+    BigramCounter aux;
+    Language l;
     for (int i = param; i < argc; i++){
         texts.calculateFrequencies(argv[i]);
-        texts.toLanguage();
-        texts.toLanguage().setLanguageId(id);
-        texts.toLanguage().save(FileName,mode);
-        
+        aux.calculateFrequencies(argv[i+1]);
+        texts += aux;
     }
-    texts.toLanguage().sort();
+    l = texts.toLanguage();
+    l.setLanguageId(id);
+    l.sort();
+    l.save(FileName,mode);
 }
 
