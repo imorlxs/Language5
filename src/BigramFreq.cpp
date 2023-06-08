@@ -68,11 +68,11 @@ std::istream &operator>>(std::istream& is, BigramFreq& bigramFreq) {
     return is;
 }
 
-bool operator>(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+bool operator>(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     return bigramFreq2<bigramFreq1;
 }
 
-bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+bool operator<(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     bool minor = false;
     if (bigramFreq1.getFrequency() < bigramFreq2.getFrequency()) {
         minor = true;
@@ -84,18 +84,18 @@ bool operator<(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
     return minor;
 }
 
-bool operator==(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+bool operator==(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     return !(bigramFreq1 < bigramFreq2 || bigramFreq2 < bigramFreq1);
 }
 
-bool operator!=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+bool operator!=(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     return (bigramFreq1 < bigramFreq2 || bigramFreq2 < bigramFreq1);
 }
 
-bool operator<=(BigramFreq&bigramFreq1, BigramFreq bigramFreq2) {
+bool operator<=(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     return !(bigramFreq2 < bigramFreq1);
 }
 
-bool operator>=(BigramFreq bigramFreq1, BigramFreq bigramFreq2) {
+bool operator>=(const BigramFreq& bigramFreq1, const BigramFreq& bigramFreq2) {
     return !(bigramFreq1 < bigramFreq2);
 }
