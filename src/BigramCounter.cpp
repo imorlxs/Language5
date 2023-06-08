@@ -116,7 +116,6 @@ void BigramCounter::calculateFrequencies(char* fileName) {
     std::string text;
     fin.open(fileName);
     if (fin) {
-        // Esto solo cogería la primera palabra, no? Utiliza while(fin >> text)
         while (fin >> text) {
             for (int i = 0; i < text.length() - 1; i++) {
                 Bigram bigram(text[i], text[i + 1]);
@@ -175,7 +174,7 @@ void BigramCounter::deallocate() {
     delete[] _frequency;
 }
 
-int& BigramCounter::findBigram(Bigram bigram) {
+int& BigramCounter::findBigram(const Bigram& bigram) {
     int row = _validCharacters.find(bigram[0]);
     int col = _validCharacters.find(bigram[1]);
 
@@ -195,8 +194,3 @@ void BigramCounter::copyFrom(const BigramCounter& orig) {
         }
     }
 }
-
-// COMO SABER SI UN BIGRAMA ES VALIDO
-//_validCharacters.find(bigram[0]);
-//_validCharacters.find(bigram[1]);
-//  LOS DOS DEBEN SER MAYORES O IGUAL A 0
