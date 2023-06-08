@@ -3,14 +3,12 @@
 // * Curso 2022/2023
 // */
 //
-///** 
-// * @file LEARN.cpp
-// * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
-// * @author Andrés Cano Utrera <acu@decsai.ugr.es>
-// * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
-// * 
-// * Created on 29 January 2023, 11:00
-// */
+/** 
+ * @file LEARN.cpp
+ * @author Francisco Javier Caceres Martin <javicaceres@correo.ugr.es>
+ * @author Isaac Morales Santana <imorsan@correo.ugr.es>
+ */
+
 /**
  * Shows help about the use of this program in the given output stream
  * @param outputStream The output stream where the help will be shown (for example,
