@@ -166,7 +166,7 @@ private:
 
     void deallocate();
 
-    int& findBigram(Bigram bigram);
+    int& findBigram(const Bigram& bigram);
 
     std::string getValidCharacters() const;
 
