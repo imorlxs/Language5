@@ -18,7 +18,7 @@
  * cout, cerr, etc) 
  */
 
-#include"BigramCounter.h";
+#include"BigramCounter.h"
 
 using namespace std;
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
         showEnglishHelp(cout);
         exit(1);
     }
-    char mode;
+    char mode = 't';
     int param;
     std::string s;
     std::string id = "unknown";
@@ -79,14 +79,11 @@ int main(int argc, char *argv[]) {
 
     }
     
-    int conter = 0;
+  
     BigramCounter texts;
-    BigramCounter aux;
     Language l;
     for (int i = param; i < argc; i++){
         texts.calculateFrequencies(argv[i]);
-        aux.calculateFrequencies(argv[i+1]);
-        texts += aux;
     }
     l = texts.toLanguage();
     l.setLanguageId(id);
