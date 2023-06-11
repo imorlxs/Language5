@@ -9,10 +9,7 @@
  * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
-#include <string>
-
 #include "BigramFreq.h"
-#include <cstring>
 using namespace std;
 
 BigramFreq::BigramFreq() : _bigram("__"), _frequency(0) {

@@ -13,8 +13,6 @@
 #define BIGRAM_COUNTER_H
 
 #include "Language.h"
-#include <fstream>
-#include <iostream>
 
 /**
  * @class BigramCounter

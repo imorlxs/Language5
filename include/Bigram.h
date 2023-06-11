@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <cstring>
 /**
  * @class Bigram
  * @brief It represents a pair of characters. It is used to store pairs of 

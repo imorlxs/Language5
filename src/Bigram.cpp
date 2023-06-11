@@ -9,9 +9,6 @@
  * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
-#include <string>
-#include <cstring>
-
 #include "Bigram.h"
 
 using namespace std;

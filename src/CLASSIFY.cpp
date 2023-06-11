@@ -9,8 +9,6 @@
  * @author Isaac Morales Santana <imorsan@correo.ugr.es>
  */
 
-#include <iostream>
-#include "Language.h"
 #include "BigramCounter.h"
 using namespace std;
 

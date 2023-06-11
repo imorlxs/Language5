@@ -12,8 +12,6 @@
 #ifndef BIGRAM_FREQ_H
 #define BIGRAM_FREQ_H
 
-#include <string>
-
 #include "Bigram.h"
 
 /**

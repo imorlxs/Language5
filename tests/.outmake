@@ -1,0 +1,23 @@
+"make" -f nbproject/Makefile-JOIN.mk QMAKE= SUBPROJECTS= .build-conf
+make[1]: se entra en el directorio '/home/isaac/NetBeansProjects/Language5'
+"make"  -f nbproject/Makefile-JOIN.mk dist/JOIN/GNU-Linux/JOIN
+make[2]: se entra en el directorio '/home/isaac/NetBeansProjects/Language5'
+mkdir -p build/JOIN/GNU-Linux/src
+rm -f "build/JOIN/GNU-Linux/src/Bigram.o.d"
+g++ -D JOIN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/JOIN/GNU-Linux/src/Bigram.o.d" -o build/JOIN/GNU-Linux/src/Bigram.o src/Bigram.cpp
+mkdir -p build/JOIN/GNU-Linux/src
+rm -f "build/JOIN/GNU-Linux/src/BigramCounter.o.d"
+g++ -D JOIN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/JOIN/GNU-Linux/src/BigramCounter.o.d" -o build/JOIN/GNU-Linux/src/BigramCounter.o src/BigramCounter.cpp
+mkdir -p build/JOIN/GNU-Linux/src
+rm -f "build/JOIN/GNU-Linux/src/BigramFreq.o.d"
+g++ -D JOIN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/JOIN/GNU-Linux/src/BigramFreq.o.d" -o build/JOIN/GNU-Linux/src/BigramFreq.o src/BigramFreq.cpp
+mkdir -p build/JOIN/GNU-Linux/src
+rm -f "build/JOIN/GNU-Linux/src/Language.o.d"
+g++ -D JOIN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/JOIN/GNU-Linux/src/Language.o.d" -o build/JOIN/GNU-Linux/src/Language.o src/Language.cpp
+mkdir -p build/JOIN/GNU-Linux/src
+rm -f "build/JOIN/GNU-Linux/src/metamain.o.d"
+g++ -D JOIN   -c -g -Iinclude -std=c++14 -MMD -MP -MF "build/JOIN/GNU-Linux/src/metamain.o.d" -o build/JOIN/GNU-Linux/src/metamain.o src/metamain.cpp
+mkdir -p dist/JOIN/GNU-Linux
+g++ -D JOIN    -o dist/JOIN/GNU-Linux/JOIN build/JOIN/GNU-Linux/src/Bigram.o build/JOIN/GNU-Linux/src/BigramCounter.o build/JOIN/GNU-Linux/src/BigramFreq.o build/JOIN/GNU-Linux/src/Language.o build/JOIN/GNU-Linux/src/metamain.o 
+make[2]: se sale del directorio '/home/isaac/NetBeansProjects/Language5'
+make[1]: se sale del directorio '/home/isaac/NetBeansProjects/Language5'
