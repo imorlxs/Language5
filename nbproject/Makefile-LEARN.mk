@@ -69,27 +69,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/${CND_CONF}: ${OBJECTFILES}
 ${OBJECTDIR}/src/Bigram.o: src/Bigram.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Bigram.o src/Bigram.cpp
+	$(COMPILE.cc) -g -Werror -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Bigram.o src/Bigram.cpp
 
 ${OBJECTDIR}/src/BigramCounter.o: src/BigramCounter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramCounter.o src/BigramCounter.cpp
+	$(COMPILE.cc) -g -Werror -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramCounter.o src/BigramCounter.cpp
 
 ${OBJECTDIR}/src/BigramFreq.o: src/BigramFreq.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramFreq.o src/BigramFreq.cpp
+	$(COMPILE.cc) -g -Werror -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BigramFreq.o src/BigramFreq.cpp
 
 ${OBJECTDIR}/src/Language.o: src/Language.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Language.o src/Language.cpp
+	$(COMPILE.cc) -g -Werror -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Language.o src/Language.cpp
 
 ${OBJECTDIR}/src/metamain.o: src/metamain.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/metamain.o src/metamain.cpp
+	$(COMPILE.cc) -g -Werror -Iinclude -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/metamain.o src/metamain.cpp
 
 # Subprojects
 .build-subprojects:

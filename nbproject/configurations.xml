@@ -125,6 +125,7 @@
             <pElem>include</pElem>
           </incDir>
           <commandLine>-D LEARN</commandLine>
+          <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/${CND_CONF}</output>
