@@ -111,7 +111,7 @@ BigramCounter& BigramCounter::operator+=(const BigramCounter& rhs) {
     return *this;
 }
 
-void BigramCounter::calculateFrequencies(char* fileName) {
+void BigramCounter::calculateFrequencies(const char* fileName) {
     ifstream fin;
     std::string text;
     fin.open(fileName);

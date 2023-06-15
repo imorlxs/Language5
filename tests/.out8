@@ -1,0 +1,14 @@
+==40507== Memcheck, a memory error detector
+==40507== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==40507== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==40507== Command: /home/isaac/NetBeansProjects/Language5/./dist/JOIN/GNU-Linux/JOIN -o tests/output/30bigrams+36bigrams.bgr ../Books/30bigrams.bgr ../Books/36bigrams.bgr
+==40507== 
+==40507== 
+==40507== HEAP SUMMARY:
+==40507==     in use at exit: 0 bytes in 0 blocks
+==40507==   total heap usage: 26 allocs, 26 frees, 101,943 bytes allocated
+==40507== 
+==40507== All heap blocks were freed -- no leaks are possible
+==40507== 
+==40507== For lists of detected and suppressed errors, rerun with: -s
+==40507== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
