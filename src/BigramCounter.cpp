@@ -80,7 +80,7 @@ void BigramCounter::increaseFrequency(const Bigram& bigram, int frequency) {
 
 BigramCounter& BigramCounter::operator=(const BigramCounter& orig) {
     if (this != &orig) {
-        this->~BigramCounter();
+        deallocate();
         allocate(orig.getSize());
         _validCharacters = orig._validCharacters;
         for (int i = 0; i < orig.getSize(); i++) {
