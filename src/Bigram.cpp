@@ -62,13 +62,27 @@ char& Bigram::at(int index) {
 }
 
 void Bigram::toUpper() {
-    at(0) = toupper(at(0));
-    at(1) = toupper(at(1));
+    int asciidiff = 'a' - 'A';
+    //int isodiff = 'à' - 'À';
+    for (int i = 0; i <= 1; i++) {
+        if (this->at(i) >= 'a' && this->at(i) <= 'z') {
+            this->at(i) = this->at(i) - asciidiff;
+        } /*else if (this->at(i) >= 'à' && this->at(i) <= 'ü') {
+                this->at(i) = this->at(i) - isodiff;
+        }*/
+    }
 }
 
 void Bigram::toLower() {
-    at(0) = tolower(at(0));
-    at(1) = tolower(at(1));
+    int asciidiff = 'a' - 'A';
+    //int isodiff = 'à' - 'À';
+    for (int i = 0; i <= 1; i++) {
+        if (this->at(i) >= 'A' && this->at(i) <= 'Z') {
+            this->at(i) = this->at(i) + asciidiff;
+        } /*else if (this->at(i) >= 'à' && this->at(i) <= 'ü') {
+                this->at(i) = this->at(i) - isodiff;
+        }*/
+    }
 }
 
 void Bigram::serialize(std::ostream& outputStream) {
