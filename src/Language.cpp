@@ -212,7 +212,7 @@ void Language::swap(int first, int second) {
     _vectorBigramFreq[first] = aux;
 }
 
-BigramFreq& Language::operator[](int index) const {
+const BigramFreq& Language::operator[](int index) const {
     return _vectorBigramFreq[index];
 }
 
