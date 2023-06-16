@@ -12,7 +12,8 @@
 #include "BigramFreq.h"
 using namespace std;
 
-BigramFreq::BigramFreq() : _bigram("__"), _frequency(0) {
+BigramFreq::BigramFreq(){
+     _frequency = 0;
 }
 
 const Bigram& BigramFreq::getBigram() const {
@@ -24,7 +25,7 @@ int BigramFreq::getFrequency() const {
 }
 
 void BigramFreq::setBigram(const Bigram& bigram) {
-    this->_bigram = bigram;
+    _bigram = bigram;
 }
 
 void BigramFreq::setFrequency(int frequency) {
@@ -32,7 +33,7 @@ void BigramFreq::setFrequency(int frequency) {
         throw std::out_of_range(string("void BigramFreq::setFrequency(int frequency): ") +
                 "invalid frecuency " + to_string(frequency));
     }
-    this->_frequency = frequency;
+    _frequency = frequency;
 }
 
 std::string BigramFreq::toString() const {
