@@ -252,7 +252,7 @@ void Language::increase() {
     }
     delete[] _vectorBigramFreq;
     _size++;
-    _vectorBigramFreq = vector2;
+    _vectorBigramFreq = aux;
 }
 
 std::ostream &operator<<(std::ostream& os, const Language& language) {
