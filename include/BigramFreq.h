@@ -90,7 +90,7 @@ private:
  * @param bigramFreq the BigramFreq object. Input parameter
  * @return @p os A reference to the output stream
  */
-std::ostream &operator<<(std::ostream& os, BigramFreq& bigramFreq);
+std::ostream &operator<<(std::ostream& os, const BigramFreq& bigramFreq);
 
 /**
  * @brief Overloading of the stream extraction operator for BigramFreq class
