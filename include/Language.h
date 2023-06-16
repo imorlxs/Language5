@@ -229,7 +229,7 @@ private:
     static const std::string MAGIC_STRING_T; ///< A const string with the magic string for text files
     static const std::string MAGIC_STRING_B;
     BigramFreq* allocate(int n);
-    void increase(BigramFreq* &vector1, int &nElements, int increment);
+    void increase();
     void copyFrom(const Language &orig);
 };
 
