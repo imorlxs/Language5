@@ -149,6 +149,7 @@ Language BigramCounter::toLanguage() const {
             }
         }
     }
+    language.sort();
     return language;
 }
 

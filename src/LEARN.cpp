@@ -84,7 +84,6 @@ int main(int argc, char *argv[]) {
     }
     l = texts.toLanguage();
     l.setLanguageId(id);    
-    l.sort();
     l.save(FileName,mode);
 }
 

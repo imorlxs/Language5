@@ -46,7 +46,6 @@ int main(int argc, char *argv[]) {
     BigramCounter text;
     text.calculateFrequencies(argv[1]);
     Language lang_input = text.toLanguage();
-    lang_input.sort();
 
 
     Language lang_model;
