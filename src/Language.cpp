@@ -198,7 +198,7 @@ void Language::append(const BigramFreq &bigramFreq) {
     if (index >= 0) {
         _vectorBigramFreq[index].setFrequency(freq + _vectorBigramFreq[index].getFrequency());
     } else {
-        increase(_vectorBigramFreq, _size, 1);
+        increase();
         _vectorBigramFreq[_size - 1].setBigram(bigram);
         _vectorBigramFreq[_size - 1].setFrequency(freq);
 
@@ -245,14 +245,14 @@ void Language::copyFrom(const Language &orig) {
     }
 }
 
-void Language::increase(BigramFreq* &vector1, int &nElements, int increment) {
-    nElements += increment;
-    BigramFreq* vector2 = new BigramFreq[nElements];
-    for (int i = 0; i < (nElements - increment); i++) {
-        vector2[i] = vector1[i];
+void Language::increase() {
+    BigramFreq* aux = new BigramFreq[_size + 1];
+    for (int i = 0; i < (_size); i++) {
+        aux[i] = _vectorBigramFreq[i];
     }
-    delete[] vector1;
-    vector1 = vector2;
+    delete[] _vectorBigramFreq;
+    _size++;
+    _vectorBigramFreq = vector2;
 }
 
 std::ostream &operator<<(std::ostream& os, const Language& language) {
