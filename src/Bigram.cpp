@@ -64,11 +64,11 @@ char& Bigram::at(int index) {
 void Bigram::toUpper() {
     int asciidiff = 'a' - 'A';
     //int isodiff = 'à' - 'À';
-    for (int i = 0; i <= 1; i++) {
-        if (this->at(i) >= 'a' && this->at(i) <= 'z') {
-            this->at(i) = this->at(i) - asciidiff;
-        } /*else if (this->at(i) >= 'à' && this->at(i) <= 'ü') {
-                this->at(i) = this->at(i) - isodiff;
+    for (int i = 0; i < 2; i++) {
+        if (_text[i] >= 'a' && _text[i] <= 'z') {
+            _text[i] = _text[i] - asciidiff;
+        } /*else if (_text[i] >= à' && _text[i] <= 'ü') {
+                _text[i] = _text[i] - isodiff;
         }*/
     }
 }
@@ -76,11 +76,11 @@ void Bigram::toUpper() {
 void Bigram::toLower() {
     int asciidiff = 'a' - 'A';
     //int isodiff = 'à' - 'À';
-    for (int i = 0; i <= 1; i++) {
-        if (this->at(i) >= 'A' && this->at(i) <= 'Z') {
-            this->at(i) = this->at(i) + asciidiff;
-        } /*else if (this->at(i) >= 'à' && this->at(i) <= 'ü') {
-                this->at(i) = this->at(i) - isodiff;
+    for (int i = 0; i < 2; i++) {
+        if (_text[i] >= 'A' && _text[i] <= 'Z') {
+            _text[i] = _text[i] + asciidiff;
+        } /*else if (_text[i] >= À' && _text[i] <= 'Ü') {
+                _text[i] = _text[i] - isodiff;
         }*/
     }
 }
